@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>费用查询</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="css/sm.css">
+    <link rel="stylesheet" href="css/ihu.css">
+
+  </head>
+  <body>
+    <div class="bar-l"> 
+ 
+      <input class="date-form" type="text" /> 至
+      <input class="date-to" type="text" data-toggle='date' />
+      
+      <span class="fr">类别 <input class="type-cost" type="text"/></span>
+    </div>
+    
+    <div class="card cost-card">
+    
+      <div class="card-header row item-inner">
+          <div class="col-40">日期</div>
+          <div class="col-33">总金额（元）</div>
+          <div class="col-25">缴费状态</div>
+      </div>
+      
+      <ul class="expmenu">
+      
+        <li>
+          <div class="card-footer row header">
+            <div class="col-40">2016-03-14 09:30</div>
+            <div class="col-33">300000.00</div>
+            <div class="col-25">失败</div>
+            <span class="arrow up"></span>
+          </div>
+          <ul class="menu">
+            <div class="card-footer no-border">
+              <span class="cost-explain">未缴费成功！</span>
+              <a class="link" href="#">重新缴费</a>
+            </div>
+          </ul>
+        </li>
+         
+        <li>
+          <div class="card-footer row header">
+            <div class="col-40">2016-03-14 09:30</div>
+            <div class="col-33">300000.00</div>
+            <div class="col-25">支付中</div>
+            <span class="arrow up"></span>
+          </div>
+          <ul class="menu">
+            <div class="card-footer no-border">
+              <span class="cost-explain">由于网络原因，可能会出现延时，请稍后。</span>
+              <a class="link" href="#">刷新</a>
+            </div>
+          </ul>
+        </li>
+        
+        <li>
+          <div class="card-footer row header">
+            <div class="col-40">2016-03-14 09:30</div>
+            <div class="col-33">300000.00</div>
+            <div class="col-25">成功</div>
+            <span class="arrow up"></span>
+          </div>
+          <ul class="menu">
+              <li>血清尿酸鉴定（各种免疫学方法）<span class="fr">10000.00 元</span></li>
+              <li>血清尿酸鉴定（各种免疫学方法）<span class="fr">10000.00 元</span></li>
+              <li>血清尿酸鉴定（各种免疫学方法）<span class="fr">10000.00 元</span></li>
+              <li>血清尿酸鉴定（各种免疫学方法）<span class="fr">10000.00 元</span></li>
+              
+              <li class="li-line">医保支付<span class="fr">10000.00 元</span></li>
+              <li>自付<span class="fr">10000.00 元</span></li>
+              <li>发票号<span class="fr">10000.00 元</span></li>
+              <li>结算券号<span class="fr">10000.00 元</span></li>
+          </ul>
+        </li> 
+        
+      </ul>
+      
+    </div>
+
+    <script src='js/zepto.min.js'></script>
+    <script src='js/sm.min.js'></script>
+    <script src='js/function.js'></script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+栅格系统工作原理:
+1.通过padding从而创建列之间的间隙,让后用第一列和最后一列设置负值margin来抵消padding的影响
+2.栅格系统中指定1到12的值来表示其跨越的范围:
+(1)伴随响应式设计思想,区分4中类型的浏览器(超小屏,小屏,中屏,大屏)其像素的临界点分别是自动,768px,992px,1200px
+
+
+
+col-md-1   十二栅格中的1份
+col-md-offset-1   将所分的栅格向右推一份
+列排序:
+
+	<div class="cantainer">
+	    <div class="row">
+	        <div class="col-md-3 col-md-push-9">col-md-push-9的意思是向后移动9份</div>
+	        <div class="col-md-9 col-md-pull-3">col-md-pull-3的意思是向前移动3份</div>
+	    </div>
+	</div>
+col-md-push-9   向后移动9份 
+col-md-push-3   向前移动3份
+
+响应式栅格:
+
+超小屏  手机(w<768px): 
+			类前缀: col-xs-
+小屏幕  平板(w>=768px):
+			类前缀: col-sm-
+中等屏幕  桌面显示器(w>=992px):
+			类前缀: col-md-
+大屏幕  大桌面显示器(w>=1200px):
+			类前缀: col-lg-
+
+
+
+/*小型屏幕*/
+@media (min-width: 768px) {
+	.cantainer {
+		width: 750px;
+	}
+}
+/*中型屏幕*/
+@media (min-width: 992px) {
+	.cantainer {
+		width: 970px;
+	}
+}
+/*大型屏幕*/
+@media (min-width: 1200px) {
+	.cantainer {
+		width: 1170px;
+	}
+}
+
+.clearfix    去除浮动
+visible-xs-   在超小屏可见

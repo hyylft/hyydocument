@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <style type="text/css">
+        canvas{-border:solid 4px #CCC;-border-radius: 50%;}
+    </style>
+    <body>
+        <canvas id="can" width="900px" height="900px">4</canvas>
+    </body>
+    <script type="text/javascript">
+        // 第一种
+        // var can = ct('can');
+        // var cans = can.getContext('2d');
+        // cans.moveTo(150,50);//第一个起点
+        // cans.lineTo(50,150);//第二个点
+        // cans.lineTo(150,250);//第三个点（以第二个点为起点）
+        // cans.lineTo(250,150);
+        // cans.lineTo(150,50);
+        // cans.lineWidth=3;
+        // cans.strokeStyle = '#CCC';
+        // // cans.fillStyle="#ccc";
+        // // cans.fillRect(0,0,300,300);
+        // cans.stroke();
+        // cans.fillStyle="#ccc";
+        // cans.fillRect(75,75,150,150);
+        // cans.roate(90)
+        // function ct(id){
+        //     return document.getElementById(id);
+        // }
+
+        //第二种 (canvas图片旋转)
+        window.onload = function() {    
+            var canvas = document.getElementById('can');
+               var ctx1 = canvas.getContext('2d');
+               var image1 = new Image();
+               image1.onload = function() {
+                 // regular rotation about center
+                 var xpos = canvas.width/2;
+                 var ypos = canvas.height/2;
+                 ctx1.drawImage(image1, xpos - image1.width / 2, ypos - image1.height / 2);
+                 ctx1.save();
+                 ctx1.translate(xpos, ypos);
+                 ctx1.rotate(47 * Math.PI / 180);//旋转47度
+                 ctx1.translate(-xpos, -ypos);
+                 ctx1.drawImage(image1, xpos - image1.width / 2, ypos - image1.height / 2);
+                 ctx1.restore();
+               }
+               image1.src = 'http://img4.duitang.com/uploads/item/201312/05/20131205172433_GPhxi.thumb.600_0.jpeg';
+        } 
+        // 第三种 (canvas覆盖组合)
+        // window.onload = function() {    
+        //     var canvas =document.getElementById("can");   
+        //     var context =canvas.getContext("2d");  
+               
+        //     context.globalCompositeOperation ="lighter";  
+               
+        //     context.shadowBlur = 10;  
+        //     context.shadowColor = "#a3a3a3";  
+        //     context.shadowOffsetX = 5;  
+        //     context.shadowOffsetY = 5;  
+               
+        //     context.fillStyle = "red";  
+        //     context.fillRect(50, 50, 100, 100);  
+        // } 
+        // 第四种 (canvas渐变)
+        // window.onload = function() {    
+        //     var canvas =document.getElementById("can");  
+        //     var context =canvas.getContext("2d");  
+               
+        //     var lGrd = context.createLinearGradient(0,0, 300, 300);  
+        //     lGrd.addColorStop(0, '#ff0000');  
+        //     lGrd.addColorStop(1, '#0000ff');  
+        //     context.fillStyle = lGrd;  
+        //     context.fillRect(0, 0, 300, 300);  
+               
+        //     var rGrd =context.createRadialGradient(450, 150, 30, 450, 150, 150);  
+        //     rGrd.addColorStop(0, 'white');  
+        //     rGrd.addColorStop(1, 'black');  
+        //     context.fillStyle = rGrd;  
+        //     context.fillRect(300, 0, 300, 300); 
+        // } 
+        // 第五种 (canvas闪烁)
+        // window.onload = function() {
+        //     var canvas =document.getElementById("can");  
+        //     var context =canvas.getContext("2d");  
+               
+        //     var lCanvas =document.createElement("canvas");  
+        //     lCanvas.width = canvas.width / 2;  
+        //     lCanvas.height = lCanvas.width;  
+        //     var lContext =lCanvas.getContext("2d");  
+        //     lContext.fillStyle = "#000000";  
+               
+        //     var rCanvas =document.createElement("canvas");  
+        //     rCanvas.width = canvas.width / 2;  
+        //     rCanvas.height = rCanvas.width;  
+        //     var rContext =rCanvas.getContext("2d");  
+        //     rContext.fillStyle = "#ffffff";  
+               
+        //     const TIME = 0.01  
+        //     var factor = 0;  
+               
+        //     function changeAlpha() {  
+        //              factor+= TIME;  
+        //              lContext.globalAlpha= (Math.sin(factor) + 1) / 2;  
+        //              rContext.globalAlpha= (Math.cos(factor) + 1) / 2;  
+        //     }  
+               
+        //     function draw() {  
+        //              context.clearRect(0,0, canvas.width, canvas.height);  
+        //              lContext.clearRect(0,0, lCanvas.width, lCanvas.height);  
+        //              rContext.clearRect(0,0, rCanvas.width, rCanvas.height);  
+        //              changeAlpha();  
+        //              lContext.fillRect(0,0, lCanvas.width, lCanvas.height);  
+        //              rContext.fillRect(0,0, rCanvas.width, rCanvas.height);  
+        //              context.drawImage(lCanvas,0, 0);  
+        //              context.drawImage(rCanvas,300, 0);  
+        //     }  
+               
+        //     setInterval(draw, TIME); 
+        // } 
+    </script>
+</html>

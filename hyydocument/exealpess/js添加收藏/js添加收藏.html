@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js添加收藏夹</title>
+    <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+</head>
+<script>
+
+$(document).ready(function() {
+    $("#addcollect").click(function() {
+        var ctrl = (navigator.userAgent.toLowerCase()).indexOf('mac') != -1 ? 'Command/Cmd': 'CTRL';
+        var tit = document.title.innerHTML;
+        if (document.all) {
+            window.external.addFavorite('http://www.xx.com', 'tit')
+        } else if (window.sidebar) {
+            window.sidebar.addPanel('tit', 'http://www.xx.com', "")
+        } else {
+            alert('您可以尝试通过快捷键' + ctrl + ' + D 加入到收藏夹~');
+        }
+    })
+});
+/*
+window.sidebar和window.external是js的bom内容，比如添加搜索引擎到浏览器（window.external.AddSearchProvider or window.sidebar.addSearchEngine）添加新面板到侧边栏（window.sidebar.addPanel）添加到收藏夹（window.external.addFavorite）等都是这些对象的方法
+    如下：
+window.external.AddFavorite(url,"网页名称")
+window.sidebar.addPanel('网页名称', 'url',''); 
+*/
+
+</script>
+<body>
+	<a id="addcollect" rel="sidebar" href="#">加入收藏夹</a>
+    <!--
+***如果 <a>上面没有加 “rel=sidebar” ，那么将会报错： window.sidebar.addPanel is not a function （by default7#zbphp.com）
+-->
+</body>
+</html>

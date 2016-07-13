@@ -1,0 +1,83 @@
+body, section, p, ul, h1, h2, h3, em {
+  padding: 0;
+  margin: 0;
+  font-family: "PingFang", "Hiragino Sans GB", "微软雅黑", "宋体";
+  line-height: 1.5em;
+  font-style: normal;
+}
+html {
+  font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+}
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  color: #333;
+  font-family: "PingFang", "Hiragino Sans GB", "微软雅黑", "宋体";
+}
+ul {
+  list-style: none;
+}
+input[type="button"], input[type="submit"], input[type="reset"], button {
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+}
+.paybox {
+  padding: 1rem 0.5rem 0 0.5rem;
+  background-color: #ececec;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.money-total {
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  background-color: #fff;
+  border-radius: 0.3rem;
+
+}
+.money-total span { 
+  width: 48%;
+  margin-left: 2%;
+  float: left;
+}
+.pay-way {
+  margin-top: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  width: 100%;
+}
+.pay-way li {
+  margin: 0 1%;
+  height: 3rem;
+  line-height: 3rem;
+  border-bottom: 1px solid #e1e1e1;
+}
+.pay-way li:first-child {
+  font-size: 1.4rem;
+  text-indent: 1%;
+}
+.pay-way li:last-child {
+  border-bottom: none;
+}
+.pay-way input {
+  margin: 0 0.8rem 0 2.5rem;
+}
+button {
+  width: 90%;
+  height: 3rem;
+  background-color: #1abc9c;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+  color: #fff;
+  font-size: 1.4em;
+  display: block;
+}
