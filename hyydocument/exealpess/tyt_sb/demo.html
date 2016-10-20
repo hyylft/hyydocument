@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title></title>
+	<script type="text/javascript"src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript"src="js/tyt_jilian.js?V0.1"></script>
+
+	<script type="text/javascript">
+		var sbDiv1=new ThreeLevelData('1', 'position2', 'boxDiv2', 'oneLevelId', 'twoLevelId', 'threeLevelId', 'tyt_Level_iframe2')
+
+		var sbDiv0=new ThreeLevelData('0', 'position0', 'boxDiv0', 'oneLevelId0', 'twoLevelId0', 'threeLevelId0', 'tyt_Level_iframe0')
+
+	</script>
+</head>
+
+<body >
+	<div >不必须选择3
+		<li style="width:500px;margin:0 auto;position:relative">
+			<input id="position0"type="text"value="土方机械 挖掘机 微挖"onclick="sbDiv0.openLevel();"readonly class="positionInput">
+			<div style="display:none;position:absolute;z-index:15;top:25px;left:-20px;overflow:visible;"id="boxDiv0">
+				<iframe name="tyt_Level_iframe0"id="tyt_Level_iframe0"src="tyt_shebei.html"frameborder="0"width="240"scrolling="no"height="250"leftmargin="0"topmargin="0"></iframe>
+			</div>
+		</li>
+	</ul>
+	<p class="mtl20"><input id="oneLevelId0"type="text"value="168"onclick="sbDiv0.openLevel();"class="positionInput"></p>
+	<p class="mtl20"><input id="twoLevelId0"type="text"value="174"class="positionInput"></p>
+	<p class="mtl20"><input id="threeLevelId0"type="text"value="223"class="positionInput"></p>
+
+	<div style="clear:both;"></div>
+</div>
+
+<div>
+
+	<ul>必须选择3
+		<li style="width:500px;margin:0 auto;position:relative">
+			<input id="position2"type="text"value="土方机械 挖掘机 微挖"onclick="sbDiv1.openLevel();"readonly class="positionInput">
+			<div style="display:none;position:absolute;z-index:9999;top:25px;left:-20px"id="boxDiv2">
+				<iframe name="tyt_Level_iframe2"id="tyt_Level_iframe2"src="tyt_shebei.html"frameborder="0"width="500"scrolling="no"height="250"leftmargin="0"topmargin="0"></iframe>
+			</div>
+		</li>
+	</ul>
+	<p class="mtl20"><input id="oneLevelId"type="text"value="168"onclick="sbDiv1.openLevel();"class="positionInput"></p>
+	<p class="mtl20"><input id="twoLevelId"type="text"value="174"class="positionInput"></p>
+	<p class="mtl20"><input id="threeLevelId"type="text"value="223"class="positionInput"></p>
+
+</div>
+</body>
+
+</html>

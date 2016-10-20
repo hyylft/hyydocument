@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href="css/style.css" type="text/css" rel="stylesheet">
+  <title>选择地区</title>
+</head>
+
+<body >
+
+  <div class="wrap">
+    <p class="mtl20"><input id="position" type="hidden" class="positionInput"></p>
+
+    <div class="boxDiv" id="boxDiv" style="display:block">
+      <!-- <a class="closeBtn" id="closeBtn"><img src="images/guanbi.png" width="17" height="17" alt=""></a> -->
+      <!--标签-->
+      <div id="tabs" class="tabs">
+        <ul>
+          <li><input type="text" id="sheng" value="省份" readonly  onfocus=this.blur() class="active"></li>
+          <li><input type="text" id="shi" value="城市" readonly  onfocus=this.blur()></li>
+          <li style="margin-right:0px;"><input type="text" id="xian" value="县区" readonly  onfocus=this.blur()></li>
+          <p class="clear"></p>
+        </ul>
+      </div>
+
+      <!--内容-->
+      <div id="divs">
+        <div id="div1" style="display:block" class="active clearfix">
+          <ul class="abcList">
+            <li style="margin-bottom: 49px;">A-G</li>
+            <li style="margin-bottom: 49px;">H-K</li>
+            <li style="margin-bottom: 49px;">L-S</li>
+            <li>T-Z</li>
+          </ul>
+          <ul id="u1">
+            <li class="" length="11">安徽</li>
+            <li class="" length="32">澳门</li>
+            <li class="" length="0">北京</li>
+            <li class="" length="26">重庆</li>
+            <li class="" length="12">福建</li>
+            <li class="" length="21">甘肃</li>
+            <li class="" length="18">广东</li>
+            <li class="" length="20">广西</li>
+            <li class="" length="28" style="margin-right:120px;margin-bottom:5px;">贵州</li>
+            <li class="" length="19">海南</li>
+            <li class="" length="2">河北</li>
+            <li class="" length="7">黑龙江</li>
+            <li class="" length="15">河南</li>
+            <li class="" length="17">湖北</li>
+            <li class="" length="16">湖南</li>
+            <li class="" length="9">江苏</li>
+            <li class="" length="13">江西</li>
+            <li class="" length="6" style="margin-right:120px;margin-bottom:5px;">吉林</li>
+            <li class="" length="5">辽宁</li>
+            <li class="" length="4">内蒙古</li>
+            <li class="" length="25">宁夏</li>
+            <li class="" length="24">青海</li>
+            <li class="" length="14">山东</li>
+            <li class="" length="8">上海</li>
+            <li class="" length="3">山西</li>
+            <li class="" length="22">陕西</li>
+            <li class="" length="27"  style="margin-right:120px;margin-bottom:5px;">四川</li>
+            <li class="" length="1">天津</li>
+            <li class="" length="31">台湾</li>
+            <li class="" length="23">新疆</li>
+            <li class="" length="30">西藏</li>
+            <li class="" length="33">香港</li>
+            <li class="" length="29">云南</li>
+            <li class="" length="10">浙江</li>
+          </ul>
+          <!-- <p class="clear"></p> -->
+        </div> 
+
+        <div id="div2">
+         <ul id="u2">
+
+         </ul>
+         <p class="clear"></p>
+       </div>
+
+       <div id="div3">
+         <ul id="u3">
+
+         </ul>
+         <p class="clear"></p>
+       </div>   
+
+       <!--按钮-->
+       <p class="btnP">
+       <input type="button" class="clearBtn" onclick="tyt_qk();" value="清空">
+       <input type="button" onclick="tyt_qd();" class="confirmBtn" value="确定">
+       <div class="clear"></div>
+     </p> 
+
+   </div>  
+
+ </div>
+</div>
+
+</body>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/selectArea.js"></script>
+</html>
