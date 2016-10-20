@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button class="son1">点击获取url参数</button>
+</body>
+<script>
+	
+		var btn = document.getElementsByClassName('son1')[0];
+		btn.onclick = function(){
+			window.location.href = "?aaa=123&bbb=456";
+	        var s = location.search.replace('?','');
+	        if(s){
+				alert(parseSearch().aaa)
+				alert(parseSearch().bbb)
+			}
+
+		}
+		/*
+			切割方式,获取传递参数
+		*/
+		function parseSearch(){
+	        var search = {}
+	        var s = location.search.replace('?','');
+	        alert('sssssssssssssssss'+s)
+	        if(!s) return search;
+	        s = s.split("&");
+	        
+	        for (var i = 0; i < s.length; i++) {
+	            search[s[i].split("=")[0]] = s[i].split("=")[1];
+	        }
+	        return search;
+	    }
+</script>
+</html>
