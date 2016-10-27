@@ -85,7 +85,7 @@
 		$(this).parents('.navBox').before(_html);
 		_this.find(".morePay").html(Math.abs(_this.find(".onlyPay>input").val()*_this.find(".toTal>input").val()))
 	})
-	// 避免值未负
+	// 避免出现负值
 	$(document).on("blur","input",function(event) {
 		$(this).val(Math.abs($(this).val()))
 	})
