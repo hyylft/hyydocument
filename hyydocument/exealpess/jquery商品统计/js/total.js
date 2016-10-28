@@ -62,13 +62,26 @@
 			allTal();
 		})
 	})
-	// 控制件数不小于'1'
-	$(document).on("blur",".toTal>input",function(event) {
-		var newNum = Math.abs(parseInt($(this).parents('.navBox').find(".toTal>input").val()));
-		if( newNum < 1 ){
-			$(this).parents('.navBox').find(".toTal>input").val('1')
+	// 控制件数不小于'1'   价格不小于'0'
+	$(document).on("blur",".onlyPay>input,.toTal>input",function(event) {
+		var _this = $(this).parents('.navBox');
+		//单价blur时的数据判断
+		if($(this).parent('div').hasClass('onlyPay')){
+			if(parseFloat(_this.find(".onlyPay>input").val())=='0'){
+				_this.find(".onlyPay").find("input").val('');
+			}else {
+				_this.find(".onlyPay>input").val(parseFloat(_this.find(".onlyPay>input").val()))
+			}
+		}else{
+			//件数blur时的数据判断
+			var newNum = Math.abs(parseInt($(this).parents('.navBox').find(".toTal>input").val()));
+			if( newNum < 1 ){
+				$(this).parents('.navBox').find(".toTal>input").val('1')
+			}else {
+				_this.find(".toTal>input").val(parseFloat(_this.find(".toTal>input").val()))
+			}
 		}
-	})
+	});
 	//动态添加单项
 	$(document).on("click",".appendLi",function(event) {
 		var _this = $(this).parents('.navBox');
@@ -77,17 +90,13 @@
 	    	<div class="onlyPay fl"><label>单价:&nbsp;&nbsp;</label><input placeholder="请先选择单价" type="text"></div>\
 	    	<div class="fl">\
 	    		<label class="fl">件数:&nbsp;&nbsp;</label>\
-	    		<div class="toTal fl"><a class="less fl" onclick="less();" href="javascript:;">-</a><input value="1" minnum="1" type="text"><a class="more fr" href="javascript:;">+</a></div>\
+	    		<div class="toTal fl"><a class="less fl" href="javascript:;">-</a><input value="1" minnum="1" type="text"><a class="more fr" href="javascript:;">+</a></div>\
 	    	</div>\
 	    	<div class="fl">单品总价:&nbsp;&nbsp;<span class="morePay">0</span></div>\
 	    	<div class="remove fl">删除本条</div>\
 	    </li>';
 		$(this).parents('.navBox').before(_html);
 		_this.find(".morePay").html(Math.abs(_this.find(".onlyPay>input").val()*_this.find(".toTal>input").val()))
-	})
-	// 避免出现负值
-	$(document).on("blur","input",function(event) {
-		$(this).val(Math.abs($(this).val()))
 	})
 	//删除本条数据
 	$(document).on("click",".remove",function(event) {
@@ -103,8 +112,8 @@
 	function allTal(){
 		var sum = 0;
 		$.each($(".morePay"),function(){
-			sum += parseInt($(this).html());
+			sum += parseFloat($(this).html());
 		})
 
-		$(".allTal").html(Math.abs(sum));
+		$(".allTal").html(Math.abs(sum).toFixed(2));
 	}
