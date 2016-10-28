@@ -3,84 +3,105 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
         <meta name="viewport" content="maximum-scale=1.0,initial-scale=1.0,user-scalable=no">
-        <base href="#">
-        <link href="http://icon.ico" rel="icon" type="/image/x-icon">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>二维码</title>
         <meta name="description" content="html5">
-        <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="css.css">
-<!--        jQuery二维码生成js-->
-        <script src="jquery.qrcode.min.js"></script>
-<!--        原生二维码生成js-->
-        <script src="qrcode.min.js"></script>
+        <style type="text/css">
+            .fa {
+                margin: 50px;
+                overflow: hidden;
+                display: block;
+                position: relative;
+                width: 300px;
+                height: 300px;
+            }
+            .so {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                left: 50%;
+                top: 50%;
+                margin: -25px 0 0 -25px;
+                z-index: 100;
+                border-radius: 5px;
+            }
+        </style>
     </head>
     <body>
         <header></header>
         <section>
-<!--            jquery方式-->
-            <div id="code"></div>
-            <script>
-                
-                //table生成方式
-                $("#code").qrcode({ 
-                    render: "table", //table方式 
-                    width: 400, //宽度 
-                    height:400, //高度 
-                    text: "http://cnrdn.com/rd.htm?id=1484625&r=http%3A%2F%2Fq.1006.tv%2Fma" //任意内容 
-                });
-                
-                //canvas生成方式，暂不使用
-                //$('#code').qrcode("http://www.codesky.net");
-                
-                //UTF-8转换，如有中文，请使用：text = toUtf8("这里是内容")
-                function toUtf8(str) {   
-                    var out, i, len, c;   
-                    out = "";   
-                    len = str.length;   
-                    for(i = 0; i < len; i++) {   
-                        c = str.charCodeAt(i);   
-                        if ((c >= 0x0001) && (c <= 0x007F)) {   
-                            out += str.charAt(i);   
-                        } else if (c > 0x07FF) {   
-                            out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));   
-                            out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));   
-                            out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));   
-                        } else {   
-                            out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));   
-                            out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));   
-                        }   
-                    }   
-                    return out;   
-                }
-            </script>
-        </section>
-        <footer>
-<!--            原生js方式-->
-            <div id="qrcode" style="margin-top: 20px;"></div>
-            <script type="text/javascript">
-                var qrcode = new QRCode("qrcode", {
-                    text: url,
-                    width: 128,
-                    height: 128,
-                    colorDark : "#000000",
-                    colorLight : "#ffffff",
-                    correctLevel : QRCode.CorrectLevel.H
-                });
-            </script>
+            <!-- jquery方式-->
+            <h2>table生成方式</h2>
+            <div id="code" class="fa"><img src="weixin.png" class="so"></div>
+            <h2>canvas生成方式，暂不推荐使用</h2>
+            <div id="code1"  class="fa"><img src="weixin.png" class="so"></div>
             
-            <div id="qrcode1" style="margin-top: 20px;"></div>
-            <script type="text/javascript">
-                var qrcode = new QRCode("qrcode1", {
-                    text: "http://t.cn/RwEjh9p",
-                    width: 128,
-                    height: 128,
-                    colorDark : "#000000",
-                    colorLight : "#ffffff",
-                    correctLevel : QRCode.CorrectLevel.H
-                });
-            </script>
-        
-        </footer>
+            <!-- 原生js方式-->
+            <h2>原生js方式</h2>
+            <div id="qrcode"  class="fa"><img src="weixin.png" class="so"></div>
+            <div id="qrcode1"  class="fa"><img src="weixin.png" class="so"></div>
+
+        </section>
     </body>
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <!-- jQuery二维码生成js-->
+        <script src="jquery.qrcode.min.js"></script>
+        <!-- 原生二维码生成js-->
+        <script src="qrcode.min.js"></script>
+        <script>
+            
+            // table生成方式
+            $("#code").qrcode({ 
+                render: "table", //table方式 
+                width: 300, //宽度 
+                height:300, //高度 
+                text: "https://www.baidu.com/" //任意内容 
+            });
+            
+            //canvas生成方式，暂不使用
+            $('#code1').qrcode({
+                text:"https://www.baidu.com/",
+                width: 300,
+                height:300
+            });
+
+            var qrcode = new QRCode("qrcode", {
+                text: 'https://www.baidu.com',
+                width: 300,
+                height: 300,
+                colorDark : "blue",
+                colorLight : "green",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
+            var qrcode1 = new QRCode("qrcode1", {
+                text: "https://www.baidu.com",
+                width: 300,
+                height: 300,
+                colorDark : "red",
+                colorLight : "yellow",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
+            //UTF-8转换，如有中文，请使用：text = toUtf8("这里是内容")
+            function toUtf8(str) {   
+                var out, i, len, c;   
+                out = "";   
+                len = str.length;   
+                for(i = 0; i < len; i++) {   
+                    c = str.charCodeAt(i);   
+                    if ((c >= 0x0001) && (c <= 0x007F)) {   
+                        out += str.charAt(i);   
+                    } else if (c > 0x07FF) {   
+                        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));   
+                        out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));   
+                        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));   
+                    } else {   
+                        out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));   
+                        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));   
+                    }   
+                }   
+                return out;   
+            }
+        </script>
 </html>
