@@ -70,7 +70,7 @@
 			if(parseFloat(_this.find(".onlyPay>input").val())=='0'){
 				_this.find(".onlyPay").find("input").val('');
 			}else {
-				_this.find(".onlyPay>input").val(parseFloat(_this.find(".onlyPay>input").val()))
+				_this.find(".onlyPay>input").val(_this.find(".onlyPay>input").val())
 			}
 		}else{
 			//件数blur时的数据判断
@@ -81,6 +81,7 @@
 				_this.find(".toTal>input").val(parseFloat(_this.find(".toTal>input").val()))
 			}
 		}
+		allTal();
 	});
 	//动态添加单项
 	$(document).on("click",".appendLi",function(event) {

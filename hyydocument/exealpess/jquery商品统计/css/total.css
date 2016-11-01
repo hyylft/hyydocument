@@ -1,100 +1,100 @@
 /*===================total.css===================*/
 
-		* {
-			margin: 0;
-			padding: 0;
-			font-family: '微软雅黑';
-		}
-		.fl {
-			float: left;
-		}
-		.fr {
-			float: right;
-		}
-		.cf:after {
-			display: block;
-			content: '';
-			clear: both;
-		}
-		.cf {
-			zoom: 1;
-		}
-		a {
-			text-decoration: none;
-		}
-		li {
-			list-style: none;
-		}
-		.navBox {
-			margin: 50px;
-		}
-		.navBox>div {
-			display: block;
-			width: 25%;
-			height: 25px;
-			margin: 0 auto;
-		}
-		.navBox .toTal {
-			position: relative;
-			overflow: hidden;
-			height: 22px;
-			width: 80px;
-		}
-		.toTal .less {
-			border: 1px solid #cacbcb;
-			border-right: 0;
-			color: #333;
-			border: 1px solid #cacbcb;
-			border-right: 0;
-			height: 18px;
-			line-height: 18px;
-			padding: 1px 0;
-			width: 16px;
-			text-align: center;			
-			margin: 0;
-			background: #fff;
-		}
-		.noBuy {
-			color: #999!important;
-			cursor: default;
-		}
-		.toTal input {
-			display: inline-block;
-			width: 100%;
-			position: absolute;
-			left: 17px;
-			top: 0;
-			border: 1px solid #cacbcb;
-			width: 42px;
-			height: 18px;
-			line-height: 18px;
-			text-align: center;
-			padding: 1px;
-			margin: 0;
-			font-size: 12px;
-			font-family: verdana;
-			color: #333;
-			-webkit-appearance: none;
-		}
-		.toTal .more {
-			border: 1px solid #cacbcb;
-			border-left: 0;
-			color: #333;
-			border: 1px solid #cacbcb;
-			height: 18px;
-			line-height: 18px;
-			padding: 1px 0;
-			width: 16px;
-			text-align: center;
-			color: #666;
-			margin: 0;
-			background: #fff;
-		}
-		.morePay,.allTal {
-			display: inline-block;
-			width: 70%;
-			border-bottom: 1px solid #000;
-		}
-		.appendLi {
-			cursor: pointer;
-		}
+* {
+	margin: 0;
+	padding: 0;
+	font-family: '微软雅黑';
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.cf:after {
+	display: block;
+	content: '';
+	clear: both;
+}
+.cf {
+	zoom: 1;
+}
+a {
+	text-decoration: none;
+}
+li {
+	list-style: none;
+}
+.navBox {
+	margin: 50px;
+}
+.navBox>div {
+	display: block;
+	width: 25%;
+	height: 25px;
+	margin: 0 auto;
+}
+.navBox .toTal {
+	position: relative;
+	overflow: hidden;
+	height: 22px;
+	width: 80px;
+}
+.toTal .less {
+	border: 1px solid #cacbcb;
+	border-right: 0;
+	color: #333;
+	border: 1px solid #cacbcb;
+	border-right: 0;
+	height: 18px;
+	line-height: 18px;
+	padding: 1px 0;
+	width: 16px;
+	text-align: center;			
+	margin: 0;
+	background: #fff;
+}
+.noBuy {
+	color: #999!important;
+	cursor: default;
+}
+.toTal input {
+	display: inline-block;
+	width: 100%;
+	position: absolute;
+	left: 17px;
+	top: 0;
+	border: 1px solid #cacbcb;
+	width: 42px;
+	height: 18px;
+	line-height: 18px;
+	text-align: center;
+	padding: 1px;
+	margin: 0;
+	font-size: 12px;
+	font-family: verdana;
+	color: #333;
+	-webkit-appearance: none;
+}
+.toTal .more {
+	border: 1px solid #cacbcb;
+	border-left: 0;
+	color: #333;
+	border: 1px solid #cacbcb;
+	height: 18px;
+	line-height: 18px;
+	padding: 1px 0;
+	width: 16px;
+	text-align: center;
+	color: #666;
+	margin: 0;
+	background: #fff;
+}
+.morePay,.allTal {
+	display: inline-block;
+	width: 70%;
+	border-bottom: 1px solid #000;
+}
+.appendLi {
+	cursor: pointer;
+}
