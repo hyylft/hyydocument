@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片放大</title>  
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+        <link href="css/cloudzoom.css" type="text/css" rel="stylesheet">
+        <link href="css/thumbelina.css" type="text/css" rel="stylesheet">
+        <style type="text/css">
+           
+            body {
+                font-family: arial, sans-serif;
+                color: #444;
+                font-size: 16px;
+                padding:0px;
+                margin:0px;
+            }
+            
+            p {
+                line-height: 20px;
+            }
+            
+            code {
+                font-weight: bold;
+                color: #f44;;
+            }
+            a {
+                color:#3d8dde;
+            }
+            
+            #wrapper {
+                padding:10px;
+            }
+            #surround {
+                width:50%;
+                min-width: 256px;
+                max-width: 480px;
+            }
+            img.cloudzoom {
+                width:100%;
+            }
+        
+            #slider1 {
+                margin-left:20px;
+                margin-right:20px;
+                height:119px;
+                border-top:1px solid #aaa;
+                border-bottom:1px solid #aaa;
+                position:relative;
+            }
+            
+        </style>
+        
+        
+        <style>
+        </style>
+
+    </head>
+    <body>
+<div id="surround">
+    
+    <img class="cloudzoom" alt="Cloud Zoom small image" id="zoom1" src="img/image5.jpg" data-cloudzoom="
+           zoomSizeMode:&quot;image&quot;,
+           autoInside: 550
+       " style="-webkit-user-select: none;">
+ 
+ 
+    <div id="slider1">
+        <div class="thumbelina-but horiz left">L</div>
+        <div style="position:absolute;overflow:hidden;width:100%;height:100%;"><ul class="thumbelina" style="left: -35px;">
+            <li style="display: inline-block;"><img class="cloudzoom-gallery" src="img/sm1.jpg" data-cloudzoom="useZoom:&#39;.cloudzoom&#39;, image:&#39;img/la1.jpg&#39; "></li>
+
+            <li style="display: inline-block;"><img class="cloudzoom-gallery" src="img/sm2.jpg" data-cloudzoom="useZoom:&#39;.cloudzoom&#39;, image:&#39;img/la2.jpg&#39; "></li>
+
+            <li style="display: inline-block;"><img class="cloudzoom-gallery" src="img/sm3.jpg" data-cloudzoom="useZoom:&#39;.cloudzoom&#39;, image:&#39;img/la3.jpg&#39; "></li>
+
+            <li style="display: inline-block;"><img class="cloudzoom-gallery" src="img/sm4.jpg" data-cloudzoom="useZoom:&#39;.cloudzoom&#39;, image:&#39;img/la4.jpg&#39; "></li>
+
+            <li style="display: inline-block;"><img class="cloudzoom-gallery cloudzoom-gallery-active" src="img/sm5.jpg" data-cloudzoom="useZoom:&#39;.cloudzoom&#39;, image:&#39;img/la5.jpg&#39; "></li>
+
+            <li style="display: inline-block;"><img class="cloudzoom-gallery" src="img/sm6.jpg" data-cloudzoom="useZoom:&#39;.cloudzoom&#39;, image:&#39;img/la6.jpg&#39; "></li>
+           
+
+        </ul></div>
+        <div class="thumbelina-but horiz right">R</div>
+    </div>
+    
+</div>
+</body>
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/cloudzoom.js"></script>
+    <script type="text/javascript" src="js/thumbelina.js"></script>
+    <script type="text/javascript">
+        CloudZoom.quickStart();
+        $(function(){
+            $('#slider1').Thumbelina({
+                $bwdBut:$('#slider1 .left'), 
+                $fwdBut:$('#slider1 .right')
+            });
+        });
+
+        
+    </script>
+</html>
