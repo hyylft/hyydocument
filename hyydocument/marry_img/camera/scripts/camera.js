@@ -1,14 +1,46 @@
 // Camera slideshow v1.2.0 - a jQuery slideshow with many effects, transitions, easy to customize, using canvas and mobile ready, based on jQuery 1.4+
 // Copyright (c) 2012 by Manuel Masia - www.pixedelic.com
 // Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
+// 下面是关于camera的各种参数，只有一部分，转自http://www.jq22.com/jquery-info1792
+
+// 首先是图片上的参数:
+// data-src: 图片路径
+// data-thumb: 缩略图路径
+// data-link: 图片链接
+// data-portrait: 显示图片的实际尺寸( "true", "false" )
+// data-slideOn: 渐隐效果( "next", "prev", "random" )
+// data-target: 链接打开的形式( "_blank", "_new", "_parent", "_self", "_top" )
+// data-time: 图片的显示时间( "可直接输入数字" )
+// data-video: 取消视频自动播放( "hide" )
+// 以上是图片的参数, 切记每条属性只针对的是一张图片.
+
+// 下面是JS上的参数, 也就是控制整个幻灯片的
+// height: '' 幻灯片的高度
+// hover: 鼠标经过幻灯片时暂停(true, false)
+// imagePath: 图片的目录
+// loader: 加载图标(pie, bar, none)
+// loaderColor: 加载图标颜色( '颜色值,例如:#eee' )
+// loaderBgColor: 加载图标背景颜色
+// loaderOpacity: 加载图标的透明度( '.8'默认值, 其他的可以写 0, .1, .2, .3, .4, .5, .6, .7, .8, .9, 1 )
+// loaderPadding: 加载图标的大小( 填数字,默认为2 )
+// navigation: 左右箭头显示/隐藏(true, false)
+// navigationHover: 鼠标经过时左右箭头显示/隐藏(true, false)
+// pagination: 是否显示分页(true, false)
+// playPause: 暂停按钮显示/隐藏(true, false)
+// pauseOnClick: 鼠标点击后是否暂停(true, false)
+// portrait: 显示幻灯片里所有图片的实际大小(true, false)
+// thumbnails: 是否显示缩略图(true, false)
+// time: 幻灯片播放时间( 填数字 )
+// transPeriod: 动画速度( 填数字 )
+
+
 ;(function($){$.fn.camera = function(opts, callback) {
-	
 	var defaults = {
 		alignment			: 'center', //topLeft, topCenter, topRight, centerLeft, center, centerRight, bottomLeft, bottomCenter, bottomRight
 		
-		autoAdvance			: true,	//true, false
+		autoAdvance			: true,	// 自动开始  true, false
 		
-		mobileAutoAdvance	: true, //true, false. Auto-advancing for mobile devices
+		mobileAutoAdvance	: true, //手机端的自动开始  true, false. Auto-advancing for mobile devices
 		
 		barDirection		: 'leftToRight',	//'leftToRight', 'rightToLeft', 'topToBottom', 'bottomToTop'
 		
@@ -27,29 +59,29 @@
 
 		gridDifference		: 250,	//to make the grid blocks slower than the slices, this value must be smaller than transPeriod
 		
-		height				: '50%',	//here you can type pixels (for instance '300px'), a percentage (relative to the width of the slideshow, for instance '50%') or 'auto'
+		height				: '50%',	//幻灯片的高度 here you can type pixels (for instance '300px'), a percentage (relative to the width of the slideshow, for instance '50%') or 'auto'
 		
-		imagePath			: 'images/',	//he path to the image folder (it serves for the blank.gif, when you want to display videos)
+		imagePath			: 'images/',	//图片的目录  he path to the image folder (it serves for the blank.gif, when you want to display videos)
 		
-		hover				: true,	//true, false. Puase on state hover. Not available for mobile devices
+		hover				: true,	//鼠标经过幻灯片时暂停(true, false) true, false. Puase on state hover. Not available for mobile devices
 				
-		loader				: 'pie',	//pie, bar, none (even if you choose "pie", old browsers like IE8- can't display it... they will display always a loading bar)
+		loader				: 'pie',	//加载图标(pie, bar, none)  pie, bar, none (even if you choose "pie", old browsers like IE8- can't display it... they will display always a loading bar)
 		
-		loaderColor			: '#eeeeee', 
+		loaderColor			: '#eeeeee', //加载图标时,最下方加载条的颜色( '颜色值,例如:#eee' )
 		
-		loaderBgColor		: '#222222', 
+		loaderBgColor		: '#222222', //加载图时候,最下方滚动条的背景颜色	
 		
-		loaderOpacity		: .8,	//0, .1, .2, .3, .4, .5, .6, .7, .8, .9, 1
+		loaderOpacity		: .8,	//加载图标的透明度( '.8'默认值, 其他的可以写 0, .1, .2, .3, .4, .5, .6, .7, .8, .9, 1 )    0, .1, .2, .3, .4, .5, .6, .7, .8, .9, 1
 		
-		loaderPadding		: 2,	//how many empty pixels you want to display between the loader and its background
+		loaderPadding		: 2,	//加载图标的大小( 填数字,默认为2 ) how many empty pixels you want to display between the loader and its background
 		
 		loaderStroke		: 7,	//the thickness both of the pie loader and of the bar loader. Remember: for the pie, the loader thickness must be less than a half of the pie diameter
 				
 		minHeight			: '200px',	//you can also leave it blank
 		
-		navigation			: true,	//true or false, to display or not the navigation buttons
+		navigation			: true,	//左右箭头显示/隐藏(true, false)  true or false, to display or not the navigation buttons
 		
-		navigationHover		: true,	//if true the navigation button (prev, next and play/stop buttons) will be visible on hover state only, if false they will be visible always
+		navigationHover		: true,	//鼠标经过时左右箭头显示/隐藏(true, false)  if true the navigation button (prev, next and play/stop buttons) will be visible on hover state only, if false they will be visible always
 		
 		mobileNavHover		: true,	//same as above, but only for mobile devices
 		
@@ -57,17 +89,17 @@
 		
 		overlayer			: true,	//a layer on the images to prevent the users grab them simply by clicking the right button of their mouse (.camera_overlayer)
 		
-		pagination			: true,
+		pagination			: true,//是否显示分页(true, false)
 		
-		playPause			: true,	//true or false, to display or not the play/pause buttons
+		playPause			: true,	//暂停按钮显示/隐藏(true, false)  true or false, to display or not the play/pause buttons
 		
-		pauseOnClick		: true,	//true, false. It stops the slideshow when you click the sliders.
+		pauseOnClick		: true,	//鼠标点击后是否暂停(true, false)  true, false. It stops the slideshow when you click the sliders.
 		
 		pieDiameter			: 38,
 		
 		piePosition			: 'rightTop',	//'rightTop', 'leftTop', 'leftBottom', 'rightBottom'
 		
-		portrait			: false, //true, false. Select true if you don't want that your images are cropped
+		portrait			: false, //显示幻灯片里所有图片的实际大小(true, false)  true, false. Select true if you don't want that your images are cropped
 		
 		rows				: 4,
 		
@@ -77,11 +109,11 @@
 		
 		slideOn				: 'random',	//next, prev, random: decide if the transition effect will be applied to the current (prev) or the next slide
 		
-		thumbnails			: false,
+		thumbnails			: false,  //是否显示缩略图(true, false)
 		
-		time				: 7000,	//milliseconds between the end of the sliding effect and the start of the nex one
+		time				: 7000,	//幻灯片播放时间( 填数字 )   milliseconds between the end of the sliding effect and the start of the nex one
 		
-		transPeriod			: 1500,	//lenght of the sliding effect in milliseconds
+		transPeriod			: 1500,	// 动画速度( 填数字 )   lenght of the sliding effect in milliseconds
 		
 ////////callbacks
 
