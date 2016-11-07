@@ -115,7 +115,7 @@
 		
 		transPeriod			: 1500,	// 动画速度( 填数字 )   lenght of the sliding effect in milliseconds
 		
-////////callbacks
+         ////callbacks
 
 		onEndTransition		: function() {  },	//this callback is invoked when the transition effect ends
 
