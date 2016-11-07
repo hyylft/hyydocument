@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+ </head>
+ <body>
+    <iframe src="iframe_son1.html" id = "iframe1"></iframe>
+    <div class="iframe1">父页面</div>
+
+
+    <script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+
+   <script>
+    function test2() {
+        console.log(1);
+        alert(1123123);
+    } 
+
+    function getFrame(f){
+        var frames = document.getElementsByTagName("iframe");
+
+         for(i=0;i<frames.length;i++){
+
+                if(frames[i].contentWindow == f){
+
+                     return(frames[i])
+
+                 }
+
+           }
+
+  }
+  //父页面调用子页面的方法
+  // 因为子iframe有可能未加载完成，要等子iframe加载完成后再进行调用，所以我们需要 子iframe.onload = function(){}; 这样再进行调用。为了兼容IE，封装一个方法：
+  function iframeIsLoad(iframe,callback){
+   
+          if(iframe.attachEvent) {  
+   
+                 iframe.attachEvent('onload',function(){
+   
+                       callback && callback();
+   
+                 });
+   
+           }else {
+   
+                   iframe.onload = function(){
+   
+                        callback && callback();
+   
+                   }
+   
+           }
+   
+     }
+     var iframe1 = document.getElementById("iframe1");
+ 
+        iframeIsLoad(iframe1,function(){
+                //1.父页面获取子页面iframe_son1的b()方法
+               iframe1.contentWindow.b();   // 打印出 我是子页面   
+         
+                //2.父页面获取子页面iframe_son1的元素
+                //2-1.方法1:
+               var iframeDom = $(".iframe2",iframe1.contentWindow.document);
+               console.log(iframeDom.html()+'123');
+                //2-2.方法2:
+                alert($("#iframe1").contents().find(".iframe2").html()+'           这是获取子页面的元素')
+         
+        });
+   </script>
+</body>
+</html>

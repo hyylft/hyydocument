@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery全选不全部选反选</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<script>
+	$(function(){
+
+		// 全选或全不选。当勾选全选按钮#selectAll旁边的复选框#all时，列表中的选项全部选中，反之取消勾选则列表中的选项全部为未选中状态。
+		$("#all").click(function(){    
+		    if(this.checked){    
+		        $("#list :checkbox").attr("checked", true);   
+		    }else{    
+		        $("#list :checkbox").attr("checked", false); 
+		    }    
+		})
+
+		//单个选择控制全选是否选中。
+		$("#list input").click(function(){
+			allchk();
+		})
+
+		// 全选。当点击全选按钮#selectAll或者勾选全选按钮旁边的复选框#all时，列表中所有的选项都会被选中，包括全选旁边的复选框也是选中状态。
+		$("#selectAll").click(function () { 
+		   $("#list :checkbox,#all").attr("checked", true);   
+		});
+
+		// 全不选。当点击全不选按钮#unSelect时，列表中所有的选项都是未选中状态，当然包括#all也是未选中状态。
+		$("#unSelect").click(function () {   
+		   $("#list :checkbox,#all").attr("checked", false);   
+		});
+
+		// 反选。当点击反选按钮#reverse，列表中所有被选中的选项变为未选中状态，而所有未选中的选项变为已选中状态，当然也要注意#all的状态。
+		$("#reverse").click(function () {  
+		    $("#list :checkbox").each(function () {   
+		        $(this).attr("checked", !$(this).attr("checked"));   
+		    }); 
+		    allchk(); 
+		});
+
+
+		// 获得选中的所有值。我们要跟后台程序交互就必须获取列表中所选项的值，我们通过遍历数组，将选中项的值存放在数组中，最后组成由逗号(,)隔开的字符串，开发者就可以通过获取这个字符串进行相应的操作了。
+		$("#getValue").click(function(){ 
+		    var valArr = new Array; 
+		    $("#list :checkbox[checked]").each(function(i){ 
+		        valArr[i] = $(this).val(); 
+		    }); 
+		    var vals = valArr.join('\n');//转换为逗号隔开的字符串 
+		    alert(vals); 
+		});    
+
+		//设置全选复选框 
+		$("#list :checkbox").click(function(){ 
+		    allchk(); 
+		});
+
+		// 函数allchk()就是用来检测全选框#all应该是选中状态还是未选中状态的，请看代码。
+		function allchk(){ 
+		    var chknum = $("#list :checkbox").size();//选项总个数 
+		    var chk = 0; 
+		    $("#list :checkbox").each(function () { 
+		        if($(this).attr("checked")=='checked'){  
+				    //如果用js获取checkbox被选中，会打印出"true"
+					//如果用js获取checkbox没被选中，会打印出"false"
+					//如果用jQuery获取checkbox被选中，会打印出"checked"
+					//如果用jQuery获取checkbox没被选中，会打印出"underfind"
+		            chk++; 
+		        } 
+		        	console.log("chknum"+chknum)
+					console.log("chk"+chk)
+		    }); 
+		    if(chknum==chk){
+		    //全选
+		        $("#all").attr("checked",true); 
+		    }else{
+		    //不全选
+		        $("#all").attr("checked",false); 
+		    } 
+		}
+	})
+
+	</script>
+</head>
+<body> 
+	<ul id="list">   
+	   <li><label><input type="checkbox" value="1"> 1.我是记录来的呢</label></li> 
+	   <li><label><input type="checkbox" value="2"> 2.哈哈，真的太天真了</label></li> 
+	   <li><label><input type="checkbox" value="3"> 3.爱上你是我的错吗？</label></li> 
+	   <li><label><input type="checkbox" value="4"> 4.从开始你就不应该爱上我</label></li> 
+	   <li><label><input type="checkbox" value="5"> 5.喜欢一个人好难</label></li> 
+	   <li><label><input type="checkbox" value="6"> 6.你在那里呢</label></li> 
+	</ul> 
+	<input type="checkbox" id="all">
+	<input type="button" value="全选" class="btn" id="selectAll">   
+	<input type="button" value="全不选" class="btn" id="unSelect">   
+	<input type="button" value="反选" class="btn" id="reverse">   
+	<input type="button" value="获得选中的所有值" class="btn" id="getValue">
+</body>
+</html>
+
+ 

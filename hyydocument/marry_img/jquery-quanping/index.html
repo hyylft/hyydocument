@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="gb2312" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>全屏背景图片自动切换带暂停按钮</title>
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="main">
+				<ul id="cbp-bislideshow" class="cbp-bislideshow">
+					<li><img src="images/1.jpg" alt="image01"/></li>
+					<li><img src="images/2.jpg" alt="image02"/></li>
+					<li><img src="images/3.jpg" alt="image03"/></li>
+					<li><img src="images/4.jpg" alt="image04"/></li>
+					<li><img src="images/5.jpg" alt="image05"/></li>
+					<li><img src="images/6.jpg" alt="image06"/></li>
+				</ul>
+				<div id="cbp-bicontrols" class="cbp-bicontrols">
+					<span class="cbp-biprev"></span>
+					<span class="cbp-bipause"></span>
+					<span class="cbp-binext"></span>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.imagesloaded.min.js"></script>
+		<script src="js/cbpBGSlideshow.min.js"></script>
+		<script>
+			$(function() {
+				cbpBGSlideshow.init();
+			});
+		</script>
+
+<div style="text-align:center;clear:both">
+</div>
+</body>
+</html>

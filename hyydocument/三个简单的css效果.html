@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三个简单实用的css效果-1</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		.box{overflow: hidden;}
+		.box div{width: calc((100%)/10); height:40px;float: left;}
+		.div1{ background: green;}
+		.div2{ background: red;}
+		.div3{ background: pink;}
+		.div4{ background: blue; }
+		.div5{ background: yellow; }
+		.div6{ background: #ccc; }
+		.div7{ background: #bbb;}
+		.div8{ background: #ddd; }
+		.div9{ background: #111; }
+		.div10{ background: #666; }
+		p{ color: transparent; text-shadow: #111 0 0 3px; } 
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="div1"></div>
+		<div class="div2"></div>
+		<div class="div3"></div>
+		<div class="div4"></div>
+		<div class="div5"></div>
+		<div class="div6"></div>
+		<div class="div7"></div>
+		<div class="div8"></div>
+		<div class="div9"></div>
+		<div class="div10"></div>
+	</div>
+	<p>我们可以使用滤镜让面前的文字看起来很模糊，这和透明度还不一样</p>
+	<div>上下对比</div>
+	<span>我们可以使用滤镜让面前的文字看起来很模糊，这和透明度还不一样</span>
+	<div style="width: 100%; position: relative; padding-bottom: 20%;">
+	    <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;background-color:#ccc;">
+	        这里面的文字会随着这个div的变化而折行
+	    </div> 
+	</div>
+</body>
+</html>

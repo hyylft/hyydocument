@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .fl {
+            float: left;
+        }
+        .fr {
+            float: right;
+        }
+        .cf:after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+        .cf {
+            zoom: 1;
+        }
+        a {
+            text-decoration: none;
+        }
+        li {
+            list-style: none;
+        }
+        #navBox {
+            
+        }
+        .son {
+            width: 400px;
+            height: 40px;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+        .son p span {
+            display: inline-block;
+            width:49px;
+            height: 40px;
+            border-left: 1px solid #ccc;
+            background-position:  no-repeat; 
+            background-size: 100% 100%;
+            background-color: #999; 
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .up {
+            background-image: url(up.png);
+        }
+        .down {
+            background-image: url(down.png);
+        }
+        .son>div {
+            width: 300px;
+            height: 100%;
+            line-height: 40px;
+            text-align: center;
+            color: green;
+        }
+        .son>div {
+            float: left;
+            width: 300px;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="navBox" class="cf">
+        <div class="son">
+            <div>NODEJS</div>
+            <p><span class="down"></span><span class="up"></span></p>
+        </div>
+        <div class="son">
+            <div>javascript</div>
+            <p><span class="down"></span><span class="up"></span></p>
+        </div>
+        <div class="son">
+            <div>HTML5</div>
+            <p><span class="down"></span><span class="up"></span></p>
+        </div>
+        <div class="son">
+            <div>CSS+HTML</div>
+            <p><span class="down"></span><span class="up"></span></p>
+        </div>
+    </div>
+</body>
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $("#navBox .down").click(function(){
+        $(this).parents('.son').insertAfter($(this).parents('.son').next())  
+    })
+    $("#navBox .up").click(function(){
+        $(this).parents('.son').insertBefore($(this).parents('.son').prev())  
+    })
+</script>
+</html>

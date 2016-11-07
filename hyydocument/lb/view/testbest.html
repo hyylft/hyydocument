@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播</title>
+	<link rel="stylesheet" href="../css/lb.css">
+	<script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+	<div class="lb">
+		<ul class="listul">
+			<li data-id=0><img src="../images/1.png" alt=""></li>
+			<li data-id=1><img src="../images/2.png" alt=""></li>
+			<li data-id=2><img src="../images/3.png" alt=""></li>
+		</ul>
+		<div class="num"><a class="pre" href="javascript:;">&lt;</a><a class="next" href="javascript:;">&gt;</a></div>
+<!-- 		<ul class="buttoller">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+		</ul> -->
+		<ul class="numList">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+</body>
+<script>
+	var $lb = $(".lb"),
+		$ct = $(".listul"),
+		$items = $ct.children(),
+		$pre = $(".pre"),
+		$next = $(".next"),
+		//条状型
+		// $bullet = $(".buttoller"),
+		//数字型
+		$bullet = $(".numList"),
+		// imgWidth = $items.width(),
+		imgWidth = $(window).width(),
+		imgCount = $ct.children().length;
+		console.log(imgCount);
+		$ct.find('img').width($(window).width());
+
+
+		// 监听窗口大小,随时改变图片大小
+		$(window).resize(function() {
+			imgWidth = $(window).width();
+			$items.width($(window).width());
+			$ct.find('img').width($(window).width());
+			return imgWidth;
+		});
+
+		// 预排图片
+	$ct.prepend($items.last().clone());
+	$ct.append($items.first().clone());
+	imgRealCount = $ct.children().last();
+	$ct.css({left:0-imgWidth, width:imgRealCount*imgWidth})
+
+	var curIdx = 0;
+	var isAnimate = false;
+
+	$next.on('click',function(){
+		playNext();
+	});
+	$pre.on('click',function(){
+		playPre();
+	});
+	$bullet.find('li').on('click',function(){
+		var idx = $(this).index();
+		if( idx > curIdx ){
+			playNext(idx - curIdx);
+		}else if(idx < curIdx){
+			playPre(curIdx - idx);
+		}
+	});
+
+	autoPlay();
+	//控制auto和stop
+	$lb.on('mouseleave',function(){
+		autoPlay();
+	})
+	$lb.on('mouseenter',function(){
+		stopPlay();
+	})
+
+	//autoPlay();
+	function stopPlay(){
+		clearInterval(clock);
+	}
+
+	function autoPlay(){
+		clock = setInterval(function(){
+			playNext();
+		},3000)
+	}
+	function playNext(idx){
+		var idx = idx || 1;
+		if(!isAnimate){
+			isAnimate = true;
+			$ct.animate({left:'-='+(imgWidth*idx)}, function(){
+				curIdx = (curIdx + idx)%imgCount;
+				if(curIdx === 0){
+					$ct.css({left:0-imgWidth});
+				}
+				isAnimate = false;
+				setBullet();
+			})
+		}
+	}
+
+	function playPre(idx){
+		var idx = idx || 1;
+		if(!isAnimate){
+			isAnimate = true;
+			$ct.animate({left:'+='+(imgWidth*idx)}, function(){
+				curIdx = (imgCount + curIdx - idx)%imgCount;
+				if(curIdx === (imgCount-1)){
+					$ct.css({left:0-imgWidth*imgCount});
+				}
+				isAnimate = false;
+				setBullet();
+			})
+		}
+	}
+
+	function setBullet(){
+		$bullet.children().removeClass('active').eq(curIdx).addClass('active')
+	}
+</script>
+</html>

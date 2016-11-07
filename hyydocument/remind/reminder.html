@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/remind.css">
+</head>
+<body>
+	<div class="outLook" style="display: ;"></div>
+	<div class="innerLook" style="display: ;"></div>
+</body>
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="js/reminder.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		//实例化
+		$('.innerLook').outLook({
+			'width': 350,
+			'tit':'温馨提示',
+			'content':'请登录',
+			'falsebtn':'退出',
+			'truebtn':'去登陆',
+			'btntype':'twobtn'
+		});
+		//
+		$(document).on("click",".btnFalse",function(){
+			alert('你点了 "btnFalse" 按钮')
+			//dosomething
+		})
+		$(document).on("click",".btnTure",function(){
+			alert('你点了 "btnTure" 按钮')
+			//dosomething
+		})
+	})
+</script>
+</html>

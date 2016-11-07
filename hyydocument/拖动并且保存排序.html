@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>拖动并且保存排序</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
+<style type="text/css">*{margin:0;padding:0}ul,ol{list-style:none}.clear{clear:both}.float::after{content:" ";display:block;height:0;clear:both}#box1,#box2{position:relative;width:1000px;margin:10px auto}#box1{border:1px solid #2687e0;background:#dbeeff;padding:10px 0}#box2{border:1px solid #ce3030;background:#ffe2e2;padding:10px 0}.placeholder{position:relative;width:100px;height:100px;float:left;background:red;border:1px solid red;margin-left:20px;margin-bottom:20px}.widget{position:relative;width:100px;height:100px;float:left;background:#dbfff2;border:1px solid #2dc25d;margin-left:20px;margin-bottom:20px;cursor:move;font:50px/100px 微软雅黑;text-align:center}#box2 .widget{background:#d5a4f7;border-color:#8e11c9}.desc{color:#888}</style>
+<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script type="text/javascript">$(function()
+{var $h2=$('h2'),$h3=$('h3'),$box=$('#box1,#box2');$box.sortable({connectWith:'.box',placeholder:'placeholder',stop:function()
+{var s1=$('#box1').sortable('toArray'),s2=$('#box2').sortable('toArray');$h2.html(s1);$h3.html(s2);}}).disableSelection();});</script>
+</head>
+<body>
+<h1>拖动并且保存排序，下面是排序值(按照组件的id排序)</h1>
+<h2></h2>
+<h3></h3>
+<ul id="box1" class="box float">
+		<li class="widget" id="i-1">1</li>
+		<li class="widget" id="i-2">2</li>
+		<li class="widget" id="i-3">3</li>
+		<li class="widget" id="i-4">4</li>
+		<li class="widget" id="i-5">5</li>
+		<li class="widget" id="i-6">6</li>
+		<li class="widget" id="i-7">7</li>
+		<li class="widget" id="i-8">8</li>
+		<li class="widget" id="i-9">9</li>
+		<li class="widget" id="i-10">10</li>
+	</ul>
+<div class="clear"></div>
+<ul id="box2" class="box float">
+		<li class="widget" id="j-11">11</li>
+		<li class="widget" id="j-12">12</li>
+		<li class="widget" id="j-13">13</li>
+		<li class="widget" id="j-14">14</li>
+		<li class="widget" id="j-15">15</li>
+		<li class="widget" id="j-16">16</li>
+		<li class="widget" id="j-17">17</li>
+		<li class="widget" id="j-18">18</li>
+		<li class="widget" id="j-19">19</li>
+		<li class="widget" id="j-20">20</li>
+	</ul>
+<div class="clear"></div>
+<div class="desc">
+<p>只是简单的例子，如果想要更好的效果，最好不要浮动。</p>
+<p>by <a href="http://qianduanblog.com/" target="_blank">yundanran.com</a></p>
+</div>
+</body>
+</html>

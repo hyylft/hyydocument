@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery检测滚动条到达底部</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<style>
+		html,body {
+			height: 2000px;
+		}
+	</style>
+</head>
+<body style="height=2000px">
+	
+</body>
+
+<script>
+	
+	$(document).ready(function() {
+    $(window).scroll(function() {
+ 		console.log($(document).scrollTop());
+        if ($(document).scrollTop()<=0){
+            alert("滚动条已经到达顶部为0");
+        }
+ 
+        if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+            alert("滚动条已经到达底部为" + $(document).scrollTop());
+        }
+    });
+});
+</script>
+</html>

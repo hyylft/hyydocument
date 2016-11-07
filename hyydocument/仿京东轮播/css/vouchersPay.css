@@ -1,0 +1,485 @@
+/*vouchersPay.css*/
+
+/*头部的切换*/
+.loadnav span {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 8rem;
+	height: 2rem;
+	line-height: 2rem;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	margin: -1rem 0 0 -4rem;
+	overflow: hidden;
+}
+.loadnav span a {
+	width: 4rem;
+	height: 100%;
+	line-height: 2rem;
+	text-align: center;
+	font-size: 1.4rem;
+	color: #fff;
+	font-family: '微软雅黑';
+	float: left;
+}
+.loadnav .chooseOn {
+	background: #fff;
+	color: #e6071b;
+}
+
+/*banner图*/
+.banner {
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+.banner_ul {
+	width: 100%;
+	height: auto;
+}
+.banner_ul li img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+#swiper-pagination {
+	bottom: 2px;
+}
+.swiper-pagination-bullet {
+	background: #6d353d;
+	opacity: 1;
+}
+.swiper-pagination-bullet-active {
+	background: #e6071b;
+}
+.page-nub {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	z-index: 3;
+	width: 4rem;
+	height: 4rem;
+	background: #c0bec1;
+	border-radius: 50%;
+	line-height: 4rem;
+	text-align: center;
+}
+.page-nub em {
+	font-size: 1.6rem;
+	color: #fff;
+	font-family: '微软雅黑';
+}
+
+/*商品名  商品分享及收藏*/
+.ouVouchers {
+	padding: 0 1rem;
+	background: #fff;
+}
+.vouDetailed {
+	overflow: hidden;
+	padding: 1rem 0;
+	border-bottom: 1px solid #d8d8d8;
+}
+.vouTitle {
+	float: left;
+}
+.vouAbout {
+	float: right;
+}
+.vouCollect {
+	float: left;
+	padding-right: 1rem;
+	border-right: 1px solid #d8d8d8;
+}
+.vouShare {
+	float: right;
+	padding-left: 1rem;
+}
+.vouTitle p {
+	font-size: 1.6rem;
+	color: #333;
+	font-family: '微软雅黑';
+}
+.vouTitle span {
+	height: 3rem;
+	line-height: 3rem;
+	font-size: 1.4rem;
+	color: #888;
+	font-family: '微软雅黑';
+}
+.vouCollect i, .vouShare i {
+	display: inline-block;
+	width: 2.5rem;
+	height: 2.5rem;
+}
+.vouCollect i {
+	background: url(../images/collStar.png) no-repeat center;
+	background-size: 100% 100%;
+}
+.vouShare i {
+	background: url(../images/vouShare.png) no-repeat center;
+	background-size: 100% 100%;
+}
+.vouCollect p, .vouShare p {
+	font-size: 1.2rem;
+	color: #666;
+	font-family: '微软雅黑';
+}
+.vouSupport {
+	height: 3rem;
+	line-height: 3rem;
+}
+.vouSupport i {
+	margin-right: 0.5rem;
+	display: inline-block;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: url(../images/xuan.png) no-repeat center;
+	background-size: 100% 100%;
+	vertical-align: middle;
+}
+.vouSupport span {
+	font-size: 1.2rem;
+	color: #333;
+	font-family: '微软雅黑';
+	vertical-align: middle;
+}
+.marSupport {
+	margin-right: 1rem;
+}
+.vouDiscount {
+	margin-bottom: 1rem;
+	padding: 0 1rem;
+	height: 3rem;
+	line-height: 3rem;
+	background: #f8f8f8;
+}
+.vouDiscount p {
+	float: left;
+	font-size: 1.2rem;
+	color: #666;
+	font-family: '微软雅黑';
+	vertical-align: middle;
+}
+.vouDiscount p i {
+	margin-right: 0.5rem;
+	display: inline-block;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: url(../images/ticket.png) no-repeat center;
+	background-size: 100% 100%;
+	vertical-align: middle;
+}
+.vouDiscount>span {
+	float: right;
+	width: 3rem;
+	height: 3rem;
+	font-size: 2.5rem;
+	color: #999;
+	font-family: '微软雅黑';
+	line-height: 1.5rem;
+	text-align: right;
+}
+.superMarket {
+	overflow: hidden;
+	padding: 0 1rem;
+	background: #fff;
+	height: 3.5rem;
+	border-bottom: 1px solid #d8d8d8;
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.superMarket h2 {
+	line-height: 3.5rem;
+	font-family: '微软雅黑';
+}
+.superMarket h2 {
+	width: 60%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	float: left;
+	font-size: 1.6rem;
+	color: #333;
+}
+.superMarket i {
+	float: left;
+	margin: 0.5rem 1rem 0 0;
+	width: 3rem;
+	height: 2.5rem;
+	background: url(../images/zywei.png) no-repeat;
+	background-size: 100% 100%;
+	border: 1px solid #d8d8d8;
+}
+
+/*联系卖家以及进.入店铺*/
+.aboutUs {
+	margin-bottom: 1rem;
+	padding: 1rem;
+	background: #fff;
+	overflow: hidden;
+}
+.aboutUs button {
+	width: 49%;
+	height: 3rem;
+	background: none;
+	border: 1px solid #d1d1d1;
+	border-radius: 5px;
+	font-size: 1.4rem;
+	font-family: '微软雅黑';
+	color: #888;
+}
+.aboutUs button:first-child {
+	float: left;
+}
+.aboutUs button:last-child {
+	float: right;
+}
+.aboutUs button i {
+	display: inline-block;
+	width: 2.5rem;
+	height: 2.5rem;
+	vertical-align: middle;
+}
+.aboutUs button:first-child i {
+	background: url(../images/callout.png) no-repeat;
+	background-size: 100% 100%;
+}
+.aboutUs button:last-child i {
+	background: url(../images/comein.png) no-repeat 0 -0.2rem;
+	background-size: 100% 100%
+}
+.noBorder {
+	border: none 0 !important;
+}
+
+/*店铺通知*/
+.vouNotice {
+	background: #fff;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+.vouNotice h2 {
+	height: 3rem;
+	line-height: 3rem;
+	font-size: 1.4rem;
+	font-family: '微软雅黑';
+	color: #555;
+}
+.vouNotice p {
+	line-height: 2rem;
+	font-size: 1.4rem;
+	font-family: '微软雅黑';
+	color: #333;
+	word-break: break-all;
+}
+
+/*购买须知*/
+.orderInfor {
+	background: #fff;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+.orderInfor li em, .orderInfor li h2 {
+	line-height: 1.8rem;
+	font-size: 1.4rem;
+	color: #555;
+	font-family: '微软雅黑';
+}
+.orderInfor li h2 {
+	height: 3rem;
+	line-height: 3rem;
+}
+.orderInfor li span {
+	line-height: 1.8rem;
+	font-size: 1.4rem;
+	color: #333;
+	font-family: '微软雅黑';
+}
+.onlyFloat {
+	overflow: hidden;
+}
+.onlyFloat div {
+	float: left;
+}
+.onlyFloat button {
+	float: right;
+	padding: 0 1rem;
+	background: none;
+	border: 1px solid #d8d8d8;
+	border-radius: 5px;
+	width: 5rem;
+	height: 2rem;
+	text-align: center;
+	line-height: 2rem;
+	font-size: 1.2rem;
+	color: #666;
+	font-family: '微软雅黑';
+}
+
+/*用户评论*/
+.comEvaluat {
+	padding: 0 1rem 1rem;
+	margin-bottom: 1rem;
+	background: #fff;	/*padding-bottom: */
+}
+.commTitle {
+	height: 4rem;
+	line-height: 4rem;
+	font-size: 1.5rem;
+	color: #888;
+	font-family: '微软雅黑';
+}
+.PraiseDegree {
+	font-size: 1.2rem;
+	color: #333333;
+	font-family: '微软雅黑';
+	border-bottom: 1px solid #d1d1d1;
+	padding-bottom: 1rem;
+}
+.PraiseDegree em {
+	color: #ff4a4a;
+}
+.userEvaluat {
+	overflow: hidden;
+	height: 3rem;
+	line-height: 3rem;
+	font-size: 1.2rem;
+	color: #888;
+	font-family: '微软雅黑';
+}
+.userEvaluat span {
+	float: left;
+}
+.userEvaluat time {
+	float: right;
+}
+.evaluatLan {
+	font-size: 1.6rem;
+	color: #333;
+	font-family: '微软雅黑';
+}
+.comEvaluat>button {
+	display: block;
+	margin: 2rem auto 0;
+	width: 8rem;
+	height: 3rem;
+	font-size: 1.4rem;
+	color: #333;
+	font-family: '微软雅黑';
+	border: 1px solid #d1d1d1;
+	border-radius: 5px;
+	background: none;
+	text-align: center;
+	line-height: 3rem;
+}
+
+/*猜你喜欢和排行榜*/
+.guessLike {
+	background: #fff;
+	padding: 1rem 1rem 0;
+}
+.guessNav {
+	display: -moz-box;
+	display: -webkit-box;
+	display: box;
+	margin-bottom: 1rem;
+}
+.guessNav a {
+	display: block;
+	width: 50%;
+	height: 2rem;
+	line-height: 2rem;
+	-moz-box-flex: 1;
+	-webkit-box-flex: 1;
+	box-flex: 1;
+	text-align: center;
+	font-size: 1.6rem;
+	color: #666666;
+	font-family: '微软雅黑';
+}
+.guessNav a:first-child {
+	border-right: 1px solid #d1d1d1;
+}
+.guessNav .chooseOn {
+	color: #e6071b;
+}
+
+/*你可能想要*/
+.youMaybe {
+	background: #fff;
+	display: -moz-box;
+	display: -webkit-box;
+	display: box;
+}
+.youMaybe div {
+	margin: 0 0.5rem;
+	-moz-box-flex: 1;
+	-webkit-box-flex: 1;
+	box-flex: 1;
+}
+.youMaybe img {
+	width: 100%;
+	height: auto;
+}
+.youMaybe div:first-child {
+	margin-left: 0;
+}
+.youMaybe div:last-child {
+	margin-right: 0;
+}
+.youMaybe p {
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.youMaybe p, .youMaybe span {
+	font-size: 1.6rem;
+	font-family: '微软雅黑';
+	margin-left: 0.5rem;
+}
+.youMaybe p {
+	height: 4rem;
+	line-height: 4rem;
+	color: #333;
+}
+.youMaybe span {
+	color: #e6071b;
+}
+.vouchersBuy {
+	position: relative;
+	height: 4rem;
+	border-top: 1px solid #d8d8d8;
+}
+.vouchersPay {
+	padding-left: 1rem;
+}
+.vouchersPay span {
+	font-size: 3.2rem;
+	color: #e6071b;
+	font-family: '微软雅黑';
+}
+.vouchersPay em {
+	font-size: 1.5rem;
+	color: #888;
+	font-family: '微软雅黑';
+	text-decoration: line-through;
+}
+.buyNow {
+	padding: 0 1rem;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	height: 4rem;
+	width: 6rem;
+	line-height: 4rem;
+	text-align: center;
+	background: #e6071b;
+	font-size: 1.6rem;
+	color: #fefefe;
+	font-family: '微软雅黑';
+}

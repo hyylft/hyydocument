@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全局变量的对比3</title>
+</head>
+<body>  
+<script>  
+    var a =1;  
+    function test(){     
+        alert(window.a);  //a为1,这里的a是全局变量哦！  
+        var a=2;     //局部变量a在这行定义  
+        alert(a);  //a为2,这里的a是局部变量哦！  
+    }  
+    test();  
+    alert(a); //a为1，这里并不在function scope内，a的值为全局变量的值  
+</script> 
+</body>
+</html>
+ 

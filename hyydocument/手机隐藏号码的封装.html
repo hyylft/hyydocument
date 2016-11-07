@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	window.onload = function(){
+		function plusXing (str,firstLen,endLen) {
+		    var len = str.length-firstLen-endLen;
+		    var xing = '';
+		    for (var i=0;i<len;i++) {
+		        xing+='*';
+		    }
+		    return str.substr(0,firstLen)+xing+str.substr(str.length-endLen);
+		}
+
+		var str = '18287197828';
+
+		//plusXing(str,firstLen,endLen)
+		//firstLen:前面保留的手机号码位数
+		//endLen:后面保留的手机号码位数
+		alert(plusXing(str,3,4));
+
+	}
+</script>
+<body>
+
+</body>
+</html>

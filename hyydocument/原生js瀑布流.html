@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原生js瀑布流</title>
+	<script>
+	window.onload = function() {
+		waterFall("wrap")
+	}//尽量避免使用Jquery的ready，safari出现问题很头痛
+	window.onresize = function() {
+		waterFall("wrap")
+	}
+	function waterFall(element,space,children) {
+		if(!element) return ;
+		space = space || 20 ;
+		children = children || "div" ;	//前三行默认设置，分别为外框元素id，上下留白，子元素标签名(子元素标签名使用太多或出错)
+		var wrap = document.getElementById(element) ;
+		var water = wrap.getElementsByTagName(children) ;
+		var spaceWidth = water[0].offsetWidth ;	//获取子元素宽度(offsetWidth会获取块级元素的padding和border)
+		var wrapWidth = wrap.offsetWidth ;	//获取外框元素宽度
+		var colNum = Math.floor(wrapWidth/spaceWidth) ;	//计算获取外框元素所能承受列数
+		var padding = Math.floor((wrapWidth - colNum*spaceWidth)/(colNum+1)) ;	//计算外框元素剩余宽度并计算左右留白
+		var column = new Array() ;
+		var length = water.length ;
+		var maxHeight = 0 ;
+		for(var i=0;i<colNum;i++) {	//初始化数组来计算各列初始top值和left值
+			column[i] = new Array() ;
+			column[i].top = space ;
+			column[i].left = (spaceWidth * i)+padding*(i+1) ;	//计算各列距离左侧距离
+		}
+		for(var i=0;i<length;i++) {	//遍历所有子元素及瀑布流布局
+			var index = i+1 ;	//计算该子元素属于第几列
+			if(index%colNum==0) {
+				sub = colNum ;
+			} else {
+				sub = index%colNum ;
+			}
+			_this = water ;
+			_this[i].style.position = "absolute" ;
+			_this[i].style.top = column[sub-1].top + "px" ;
+			_this[i].style.left = column[sub-1].left + "px" ;
+			column[sub-1].top += _this[i].offsetHeight + space ;	//计算各列最新高度以便赋值
+		}
+		for(var i=0;i<colNum;i++) {	//获取瀑布流整体布局高度
+			if(column[i].top > maxHeight) maxHeight = column[i].top ;
+		}
+		wrap.style.height = maxHeight+"px" ;	//给外框元素赋值以防止出现子元素溢出外框元素
+	}
+	//希望能帮助到大家哈，我一开始使用的事Jquery，但是考虑瀑布流比较消耗浏览器内存，就改成原生javascript了，滚动到浏览器底部ajax取值做瀑布流也灭做，等到项目到了再说吧
+	</script>
+	<style>
+	* { 
+		padding:0; margin:0; 
+	}
+	html,body { 
+		height:100%; 
+	}
+	#wrap { 
+		width:100%; 
+		margin:0 auto; 
+		overflow:hidden; 
+		position:relative; 
+	}
+	.wrap div { 
+		width:220px; 
+		height:160px;
+		padding:10px;  
+		float:left;
+	    border: 1px solid #ccc;
+	    border-radius: 5px;
+	    box-shadow: 0px 0px 5px #ccc; 
+	}
+
+	.wrap img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrap" class="wrap" style="height:2000px">
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+		<div><img src="http://userimg.shiwan.com/uploads/manage/34/dd/b1460fa91c7a573a1f16be1cc6493cff660c.jpg" alt=""></div>
+	</div>
+</body>
+</html>

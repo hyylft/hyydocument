@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渐变测试</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.bigbox::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			background-color: #F5F5F5;
+			border-radius: 10px;
+		}
+		.bigbox::-webkit-scrollbar {
+			width: 10px;
+			background-color: #F5F5F5;
+		}
+		.bigbox::-webkit-scrollbar-thumb {
+			border-radius: 10px;
+			background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(122, 153, 217)), color-stop(0.72, rgb(73, 125, 189)), color-stop(0.86, rgb(28, 58, 148)));
+		}
+		.bigbox {
+			/*padding: 20px;*/
+			width: 340px;
+			height: 240px;
+			background: yellow;
+			overflow-y: hidden; 
+		}
+		.box {
+			width: 300px;
+			height: 750px;
+			background: -webkit-gradient(linear, 0 0, 80% 0, from(green), to(transparent));			
+			/*background: -webkit-gradient(linear, 0 0, 0 100%, from(#dedede), color-stop(8%, white), color-stop(20%, red);*/
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="bigbox">
+		<div class="box"></div>
+	</div>
+</body>
+</html>

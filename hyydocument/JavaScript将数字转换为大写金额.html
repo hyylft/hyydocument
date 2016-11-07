@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript将数字转换为大写金额</title>
+	<style>
+		* {
+			margin: 0;padding: 0;
+		}
+		.box {
+			display: block;
+			width: 400px;
+			margin: 50px auto;
+		}
+		#num {
+			padding-left: 8px; 
+			display: block;
+			width: 400px;
+			height: 30px;
+			line-height: 30px;
+			color: #942121;
+			border: none 0;
+			background: #C18F1E;
+			border-radius: 20px;
+		}
+		#digit {
+			padding-left: 8px; 
+			display: block;
+			width: 400px;
+			height: 30px;
+			line-height: 30px;
+			color: #942121;
+			background: #C18F1E;
+			border-radius: 20px;
+		}
+		.cleardigit {
+			width: 240px;
+			margin: 2px auto;
+		}
+		.clear,.btn {
+			display: inline-block;
+			width: 120px;
+			height: 34px;
+			line-height: 34px;
+			text-align: center;
+			border: none 0;
+			color: #736C5D;
+			background: #D0B579;
+			border-radius: 20px;
+			cursor: pointer;
+		}
+	</style>
+	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+</head>
+<body>
+	<div class="box">
+		<span id="num"  contenteditable="true" type="text"></span>
+		<div class="cleardigit">
+			<span class="clear">清除</span><span class="btn">转换</span>
+		</div>
+		<span id="digit" type="text"></span>
+	</div>
+</body>
+<script>
+	$(document).on('click','.btn',function(){
+		var reg = new RegExp("^[0-9]+(.[0-9]*)?$");
+	    var str = $("#num").html();
+		if($("#num").html() && reg.test(str)) {
+			$("#digit").html(digitUppercase(str));
+		}else{
+			alert("请你输入要转换的金额(小写数字)");
+		}
+	})
+	$(document).on('click','.clear',function(){
+		$("#digit").html('');
+		$("#num").html('');
+	})
+	var digitUppercase = function(n) {
+	    var fraction = ['角', '分'];
+	    var digit = [
+	        '零', '壹', '贰', '叁', '肆',
+	        '伍', '陆', '柒', '捌', '玖'
+	    ];
+	    var unit = [
+	        ['元', '万', '亿'],
+	        ['', '拾', '佰', '仟']
+	    ];
+	    var head = n < 0 ? '欠' : '';
+	    n = Math.abs(n);
+	    var s = '';
+	    for (var i = 0; i < fraction.length; i++) {
+	        s += (digit[Math.floor(n * 10 * Math.pow(10, i)) % 10] + fraction[i]).replace(/零./, '');
+	    }
+	    s = s || '整';
+	    n = Math.floor(n);
+	    for (var i = 0; i < unit[0].length && n > 0; i++) {
+	        var p = '';
+	        for (var j = 0; j < unit[1].length && n > 0; j++) { 
+	            p = digit[n % 10] + unit[1][j] + p;
+	            n = Math.floor(n / 10);
+	        }
+	        s = p.replace(/(零.)*零$/, '').replace(/^$/, '零') + unit[0][i] + s;
+	    }
+	    return head + s.replace(/(零.)*零元/, '元')
+	        .replace(/(零.)+/g, '零')
+	        .replace(/^整$/, '零元整');
+	};
+</script>
+</html>
