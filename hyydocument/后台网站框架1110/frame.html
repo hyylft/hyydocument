@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+	<link href="css/theme.css" type="text/css" rel="stylesheet">
+	<link href="css/font-awesome.css" type="text/css" rel="stylesheet">
+	<link href="css/page.css" type="text/css" rel="stylesheet">
+
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<style>
+		body,ul,li,h1,h2,h3,h4,h5,iframe {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			font: 12px "微软雅黑";
+			font-style: normal;
+		}
+		body,html {
+			height: 100%;
+			overflow-x: hidden; 
+
+		}
+	</style>
+</head>
+<body class="theme-blue"> 
+	<div class="content">
+        <div class="header">
+          <ul class="breadcrumb">
+            <li>基本信息管理</li>
+            <li class="active">司机招聘信息管理</li>
+          </ul>
+        </div>
+        <div class="main-content">
+         
+        <!--搜索条件-->
+          <div class="searchCondition">
+             <ul class="o-hidden">
+                <li><label>黑白名单：</label><select class="select126"><option>黑名单</option><option>白名单</option><option>广告</option><option>散户</option></select></li>
+                <li><label>屏蔽对象：</label><select class="select126"><option>QQ号</option><option>其它</option></select></li>
+                <li><label>内容：</label><input class="input126" name="" type="text"></li>
+                <li><label>每页显示多少条：</label><input class="input126" name="" type="text" placeholder="50"></li>
+               
+             </ul>
+          </div>
+          
+          <!--页面信息-->
+          <div class="pageMessage">
+             <div class="messageLeft">
+               <ul>
+                  <li><input type="button" class="button" value="查询"></li>
+                  <li><input type="button" class="button" value="重置"></li>
+                  <li><input type="button" class="button" value="添加屏蔽"></li>
+                  <li><input type="button" class="button" value="批量生效"></li>
+               </ul>
+              </div>
+             <div class="messageRight">
+             查询到<em>10</em>个用户，当前是第<span>1</span>页，共<span>10</span>页。
+             </div>
+          </div> 
+         
+       <!--内容列表-->
+       
+       <table width="100%" border="0" class="contentList">
+  <tr class="noBg">
+    <th>操作</th><th>黑白名单</th><th>屏蔽对象</th><th>屏蔽内容</th><th>创建时间</th><th>状态</th>
+  </tr>
+  <tr>
+    <td><img src="images/edit.png" width="20" height="20" alt="编辑"></td>
+    <td>黑名单</td>
+    <td>QQ号</td>
+    <td>发生的覅危机的房间啊诶房间爱离开</td>
+    <td>2015-11-11 09：46</td>
+    <td class="colorBlue">审核通过</td>
+  </tr>
+  <tr>
+    <td><img src="images/edit.png" width="20" height="20" alt="编辑"></td>
+    <td>黑名单</td>
+    <td>QQ号</td>
+    <td>发生的覅危机的房间啊诶房间爱离开</td>
+    <td>2015-11-11 09：46</td>
+    <td class="colorRed">无效信息</td>
+  </tr>
+  <tr>
+    <td><img src="images/edit.png" width="20" height="20" alt="编辑"></td>
+    <td>黑名单</td>
+    <td>QQ号</td>
+    <td>发生的覅危机的房间啊诶房间爱离开</td>
+    <td>2015-11-11 09：46</td>
+    <td class="colorBlue">审核通过</td>
+  </tr>
+  <tr>
+    <td><img src="images/edit.png" width="20" height="20" alt="编辑"></td>
+    <td>黑名单</td>
+    <td>QQ号</td>
+    <td>发生的覅危机的房间啊诶房间爱离开</td>
+    <td>2015-11-11 09：46</td>
+    <td class="colorRed">无效信息</td>
+  </tr>
+  <tr>
+    <td><img src="images/edit.png" width="20" height="20" alt="编辑"></td>
+    <td>黑名单</td>
+    <td>QQ号</td>
+    <td>发生的覅危机的房间啊诶房间爱离开</td>
+    <td>2015-11-11 09：46</td>
+    <td class="colorRed">无效信息</td>
+  </tr>
+</table>
+         
+       </div>
+   </div>
+</body>
+</html>
