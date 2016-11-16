@@ -35,9 +35,8 @@ a {
 	float: left;
 	border-right: 1px solid #2270a4;
 }
-.mixleft {
-	width: 40px;
-	overflow: hidden;
+.tree {
+	overflow-y: inherit;
 }
 .ifm_div {
 	overflow: hidden;
@@ -46,28 +45,10 @@ a {
 	background: #77c1f4 !important;
 	color: #fff !important;
 }
-.close_color_style {
-	background: #77c1f4 !important;
-	color: #fff !important;
-}
 
 /*收缩整个左侧栏展开按钮*/
-.page_left {
-	width: 40px;
-	height: 50px;
-	font-size: 30px;
-	cursor: pointer;
-	text-align: center;
-	line-height: 50px;
-	color: #333;
-}
-.twoShow {
-	position: absolute;
-	left: 40px;
-	top: 0;
-	width: 200px;
-	z-index: 100;
-}
+
+
 .hi_sh_nav {
 	float: left;
 	position: relative;
@@ -75,16 +56,17 @@ a {
 .show_tit_content {
 	height: inherit;
 	overflow: hidden;
+	overflow-y: auto;
 }
 .tree_tit {
-	width: 200px;
+	width: 40px;
 }
 .tree_box {
 	position: relative;
 }
 .tree_box h3, .tree_box h4 {
-	border-bottom: 1px solid #ccc;
-	margin-bottom: 2px;
+	// border-bottom: 1px solid #ccc;
+	// margin-bottom: 2px;
 }
 .tree_box h4 {
 	width: 196px;
@@ -111,7 +93,7 @@ a {
 	border: 2px solid transparent;
 }
 .tree_two li {
-	width: 196px;
+	width: 176px;
 	height: 36px;
 }
 .tree_two li {
@@ -165,6 +147,12 @@ a {
 	overflow: hidden;
 }
 .tree_one {
+	position: absolute;
+	left: 40px;
+	top: 0;
+	width: 180px;
+	border: 1px solid #ccc;
+	overflow-y: auto;
 	background: #fff;
 	overflow: hidden;
 }
@@ -186,35 +174,31 @@ a {
 .top_nav {
 	width: 100%;
 	height: 50px;
-	line-height: 50px;
 	background: #f8f8f8;
 	border-bottom: 1px solid #2270a4;
-}
-.top_nav_bg {
-	width: 100%;
-}
-.top_nav h2 {
-	display: block;
-	float: left;
-	width: 200px;
-	font-size: 24px;
-	text-align: center;
-	overflow: hidden;
-	color: #fff;
+	position: relative;
+	z-index: 100;
 }
 .tit_nav a {
 	text-decoration: none;
 	display: inline-block;
 	width: 120px;
 	height: 50px;
-	line-height: 50px;
 	text-align: center;
 	font-size: 16px;
 	color: #fff;
 	float: left;
 }
 .tree {
-	overflow-y: auto;
+	// overflow-y: auto;
+}
+.bor { position: absolute;  } 
+.borp { position: absolute; } 
+.bgColor { border: 1px dashed #f00; } 
+.top_nav_box {
+	width: 800px;
+	height: 50px;
+	// background: #ccc;
 }
 .tree_box h3 {
 	position: relative;
@@ -223,47 +207,25 @@ a {
  .tree_one li {
 	position: relative;
 }
-.left_nav_bar {
-	position: absolute;
-	left: 40px;
-	top: 0;
-	width: 180px;
-	border: 1px solid #ccc;
-	overflow-y: auto;
-}
-.myiframe {
-	margin-left: 220px;
-}
-.po_fa {
-	margin-bottom: 100px;
-	overflow-y: auto;
-}
 #myiframe {
 	height: 100%;
 }
 .logo_nav {
 	height: 50px;
 	position: relative;
+	width: 40px;
+	overflow: hidden;
+	z-index: 500;
 }
 .logo_nav a {
 	display: block;
 	width: 100px;
 	margin: 0 auto;
 }
-.logo_nav a span {
-	display: inline-block;
-	vertical-align: middle;
-}
 .logo_nav a img {
 	margin: 10px 5px 10px 2px;
 	display: inline-block;
 	vertical-align: middle;
-}
-.logo_nav a span {
-	color: #fff;
-	font-size: 18px;
-	line-height: 50px;
-	margin-left: 4px;
 }
 
 /*收缩展开左侧栏中的单项箭头样式*/
@@ -290,16 +252,27 @@ a {
 	border-right: 8px solid transparent;
 	top: 10px;
 }
-.tree_box h3 em {
-	right: 28px;
-}
 .tree_one h4 em {
 	right: 14px;
+}
+.tree_one h4 {
+	width: 176px;
+}
+.tree_one h4 a {
+	padding-left: 2px;
 }
 .tree_one li:last-child h4{
 	margin: 0;
 }
-
+.page_left {
+	width: 30px;
+	height: 30px;
+	margin: 5px;
+	display: block;
+	background: url(../images/right_top.png) no-repeat;
+	background-size: 100% 100%;
+	cursor: pointer;
+}
 /*图标*/
 .icon {
 	width: 26px;
@@ -366,4 +339,88 @@ a {
 	color: #444;
 	line-height: 40px;
 	background: #eaeaeb;
+}
+
+
+
+
+#bor {
+	margin-left: 100px;
+	width: 850px;
+	background: #f8f8f8;
+}
+#bor .tree_box {
+	width: 100px;
+	height: 50px;
+	float: left;
+	position: relative;
+}
+#bor .tree_tit {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+#bor .tree_tit a {
+	width: 100%;
+	display: block;
+}
+#bor .tree_tit a i {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: 12px 37px;
+}
+#bor .tree_tit a span {
+	display: inline-block;
+	width: 70px;
+	height: 50px;
+	margin: 0 15px;
+	position: absolute;
+	left: 0;
+	top: -50px;
+	text-align: center;
+	line-height: 25px;
+	color: #000;
+	// display: none;
+	vertical-align: middle;    
+	word-wrap: break-word;
+}
+#bor .tree_one {
+	position: absolute;
+	left: 0px;
+	top: 50px;
+	width: 180px;
+	border: 1px solid #ccc;
+	overflow-y: auto;
+	background: #fff;
+	overflow: hidden;
+}
+#bor .tree_one h4 a {
+	line-height: 40px;
+	height: 40px;
+}
+#bor .tree_two {
+	width: 100%;
+}
+#bor .tree_two li a {
+	display: block;
+	width: 100%;
+	line-height: 36px;
+	height: 36px;
+	color: #555;
+	font-size: 14px;
+}
+#bor .tree_box h3 {
+	background: #f8f8f8;
+}
+#bor .page_left {
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin: 5px;
+	display: block;
+	background: url(../images/left_down.png) no-repeat;
+	background-size: 100% 100%;
+	cursor: pointer;
 }
