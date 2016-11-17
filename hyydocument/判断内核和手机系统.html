@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断内核和手机系统</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	
+
+	    function userBrowser(){  
+	    	var ua = navigator.userAgent;
+		    var browserName=ua.toLowerCase(); 
+
+
+		    	// 判断ios / android /或是未知
+		        if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
+		        	alert(browserName)
+		        	alert('ios')
+		        }else if(navigator.userAgent.match(/android/i)){
+		        	alert(browserName)
+		        	alert('android')
+		        }
+
+		        
+		    //判断浏览器的内核
+		    if(/msie/i.test(browserName) && !/opera/.test(browserName)){ 
+				if(ua.indexOf("MSIE")>0){   
+				  if(ua.indexOf("MSIE 6.0")>0){   
+				    alert("ie6");    
+				  }   
+				  if(ua.indexOf("MSIE 7.0")>0){  
+				    alert("ie7");   
+				  }   
+				  if(ua.indexOf("MSIE 8.0")>0 || (ua.indexOf("MSIE 9.0")>0 && !window.innerWidth)){
+				    alert("ie8");  
+				  }   
+				  if(ua.indexOf("MSIE 9.0")>0){  
+				    alert("ie9");  
+				  }  
+				  if(ua.indexOf("MSIE 10.0")>0){  
+				    alert("ie10");  
+				  }   
+				} 
+		        alert(browserName);  
+		        alert("IE");  
+		        return ;  
+		    }else if(/firefox/i.test(browserName)){  
+		        alert(browserName);  
+		        alert("Firefox");  
+		        return ;  
+		    }else if(/chrome/i.test(browserName) && /webkit/i.test(browserName) && /mozilla/i.test(browserName)){  
+		        alert(browserName);  
+		        alert("Chrome");  
+		        return ;  
+		    }else if(/opera/i.test(browserName)){  
+		        alert(browserName);  
+		        alert("Opera");  
+		        return ;  
+		    }else if(/webkit/i.test(browserName) &&!(/chrome/i.test(browserName) && /webkit/i.test(browserName) && /mozilla/i.test(browserName))){  
+		        alert(browserName);  
+		        alert("Safari");  
+		        return ;  
+		    }else {  
+		        alert(browserName);  
+		        alert("unKnow");  
+		    }  
+
+		} 
+		userBrowser();
+</script>
+</html>

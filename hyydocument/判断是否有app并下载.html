@@ -7,7 +7,7 @@
 </head>
 <body>
 	<!-- a标签的链接，设置为对应的下载链接；点击打开的动作，在click事件中注册 -->
-	<a href="" id="openApp"></a>
+	<a href="" id="openApp">有了特运通,大件运输变轻松!</a>
 	<script type="text/javascript">
 
 	openApp();
@@ -15,7 +15,7 @@
 		    var ua = window.navigator.userAgent.toLowerCase();  
 		    // 微信  
 		    if(ua.match(/MicroMessenger/i) == 'micromessenger'){  
-		        window.location.href='downLoadForPhone';  
+		        window.location.href='weixin://';  
 		    	}else{//非微信浏览器  
 		        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {  
 		            var loadDateTime = new Date();  
@@ -41,6 +41,7 @@
 		        }  
 		    }  
 	}
-	</script>
+
+</script>
 </body>
 </html>
