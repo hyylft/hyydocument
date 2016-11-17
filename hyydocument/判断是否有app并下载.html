@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name='apple-itunes-app' content='app-id=1059124634'>
+	<title>Document</title>
+</head>
+<body>
+	<!-- a标签的链接，设置为对应的下载链接；点击打开的动作，在click事件中注册 -->
+	<a href="" id="openApp"></a>
+	<script type="text/javascript">
+
+	openApp();
+	function openApp(){  
+		    var ua = window.navigator.userAgent.toLowerCase();  
+		    // 微信  
+		    if(ua.match(/MicroMessenger/i) == 'micromessenger'){  
+		        window.location.href='downLoadForPhone';  
+		    	}else{//非微信浏览器  
+		        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {  
+		            var loadDateTime = new Date();  
+		            window.setTimeout(function() {  
+		                var timeOutDateTime = new Date();  
+		                if (timeOutDateTime - loadDateTime < 5000) {  
+		                    window.location = "https://itunes.apple.com/cn/app/te-yun-tong/id1059124634";
+		                    //ios下载地址  
+		                } else {  
+		                	window.close();  
+		                }  
+		            },25);  
+		            window.location = "wx5d2fb6abfbeae5f0://";  
+		          }else if (navigator.userAgent.match(/android/i)) {  
+		            var state = null;  
+		            try {  
+		                window.location = 'wx5d2fb6abfbeae5f0://';  
+		                setTimeout(function(){  
+		                    window.location= "http://a.app.qq.com/o/simple.jsp?pkgname=com.google.lzl&g_f=991653&downloadSourceCode=51"; 
+		                    //android下载地址  
+		                },500);  
+		            } catch(e) {}  
+		        }  
+		    }  
+	}
+	</script>
+</body>
+</html>
