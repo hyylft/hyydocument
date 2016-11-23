@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<textarea tabindex="11" onkeyup="strLenCalc($(this), 'checklen', 80);" value="" class="px" name="subject" id="subject"></textarea> 
+	<span id="checklen">还可输入 <strong>40</strong> 个汉字</span> 
+	<input type="submit" id="subBtn" value="发布" /> 
+</body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
+<script type="text/javascript"> 
+$(function() { 
+	$("textarea").keyup(); 
+}); 
+
+function strLenCalc(obj, checklen, maxlen) { 
+　　var v = obj.val(), 
+		charlen = 0, 
+		maxlen = !maxlen ? 200 : maxlen, 
+		curlen = maxlen, 
+		len = v.length; 
+　　for(var i = 0; i < v.length; i++) { 
+　　　　if(v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) { 
+			curlen -= 1; 
+		} 
+	} 
+　　if(curlen >= len) { 
+		$("#"+checklen).html("还可输入 <strong>"+Math.floor((curlen-len)/2)+"</strong> 个字").css('color', ''); 
+		$("#subBtn").removeAttr("disabled"); 
+	} else { 
+		$("#"+checklen).html("已经超过 <strong>"+Math.ceil((len-curlen)/2)+"</strong> 个字").css('color', '#FF0000'); 
+		$("#subBtn").attr("disabled", "disabled"); 
+	} 
+} 
+</script> 
+</html>
