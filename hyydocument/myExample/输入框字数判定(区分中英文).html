@@ -26,6 +26,7 @@ function strLenCalc(obj, checklen, maxlen) {
 			curlen -= 1; 
 		} 
 	} 
+	
 　　if(curlen >= len) { 
 		$("#"+checklen).html("还可输入 <strong>"+Math.floor((curlen-len)/2)+"</strong> 个字").css('color', ''); 
 		$("#subBtn").removeAttr("disabled"); 
