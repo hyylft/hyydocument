@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>左边固定右边自适应</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.cf {
+			display: block;
+			content: '';
+			clear: both;
+		}
+		.fl {
+			float: left;
+		}
+		.fr {
+			float: right;
+		}
+		.box {
+			height: 300px;
+			background: pink;
+			margin: 50px auto 0;
+		}
+		.leftbox {
+			width: 200px;
+			height: 100%;
+			background: red;
+			margin-right: 20px;
+			text-align: center;
+			line-height: 300px;
+		}
+		.rightbox {
+			background: yellow;	
+			overflow: hidden;
+			height: 100%;	
+			text-align: center;
+			line-height: 300px;	
+		}
+	</style>
+</head>
+<body>
+	<div class="box ">
+		<div class="leftbox fl">固定宽高</div>
+		<div class="rightbox">自适应宽高</div>
+	</div>
+</body>
+</html>
