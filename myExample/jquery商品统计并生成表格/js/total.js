@@ -36,44 +36,45 @@
 		_this.find(".morePay").html(Math.abs(_this.find(".onlyPay>input").val() * _this.find(".toTal>input").val()))
 		allTal();
 	});
+
 	// 单价的修改   输入数字修改件数
 	$(document).on("focus", ".onlyPay>input,.toTal>input", function(event) {
-			var _this = $(this).parents('.navBox');
-			var newNum = Math.abs(parseInt(_this.find(".toTal>input").val()));
+		var _this = $(this).parents('.navBox');
+		var newNum = Math.abs(parseInt(_this.find(".toTal>input").val()));
+		$('body').keyup(function() {
+			// 发现单价格式错误
+			if (isNaN(_this.find(".onlyPay>input").val())) {
+				alert('请输入正确的数字');
+				_this.find(".onlyPay>input").val('');
+				_this.find(".toTal>input").val('1');
+				_this.find(".morePay").html('0')
+				return false;
+			}
+			// 发现件数格式错误
+			if (isNaN(_this.find(".toTal>input").val())) {
+				alert('请输入正确的件数');
+				_this.find(".onlyPay>input").val('');
+				_this.find(".toTal>input").val('1');
+				_this.find(".morePay").html('');
+				return false;
+			}
+			//件数不能是小数(键盘操作的控制)
+			validate(_this.find(".toTal>input"));
+			//单价必须是小数后两位
+			var val = parseFloat(_this.find(".onlyPay>input").val());
+			if (val.toString().split(".")[1] != undefined) {
+				if (val.toString().split(".")[1].length > 2) {
+					var re = /([0-9]+\.[0-9]{2})[0-9]*/;
+					_this.find(".onlyPay>input").val(_this.find(".onlyPay>input").val().replace(re, "$1"))
+				}
+			}
 
-			$('body').keyup(function() {
-				// 发现单价格式错误
-				if (isNaN(_this.find(".onlyPay>input").val())) {
-					alert('请输入正确的数字');
-					_this.find(".onlyPay>input").val('');
-					_this.find(".toTal>input").val('1');
-					_this.find(".morePay").html('0')
-					return false;
-				}
-				// 发现件数格式错误
-				if (isNaN(_this.find(".toTal>input").val())) {
-					alert('请输入正确的件数');
-					_this.find(".onlyPay>input").val('');
-					_this.find(".toTal>input").val('1');
-					_this.find(".morePay").html('');
-					return false;
-				}
-				//件数不能是小数(键盘操作的控制)
-				validate(_this.find(".toTal>input"));
-				//单价必须是小数后两位
-				var val = parseFloat(_this.find(".onlyPay>input").val());
-				if (val.toString().split(".")[1] != undefined) {
-					if (val.toString().split(".")[1].length > 2) {
-						var re = /([0-9]+\.[0-9]{2})[0-9]*/;
-						_this.find(".onlyPay>input").val(_this.find(".onlyPay>input").val().replace(re, "$1"))
-					}
-				}
-
-				_this.find(".morePay").html(Math.abs(_this.find(".onlyPay>input").val() * _this.find(".toTal>input").val()))
-				allTal();
-			})
+			_this.find(".morePay").html(Math.abs(_this.find(".onlyPay>input").val() * _this.find(".toTal>input").val()))
+			allTal();
 		})
-		// 控制件数不小于'1'   价格不小于'0'
+	})
+
+	// 控制件数不小于'1'   价格不小于'0'
 	$(document).on("blur", ".onlyPay>input,.toTal>input", function(event) {
 		var _this = $(this).parents('.navBox');
 		//单价blur时的数据判断
@@ -95,11 +96,12 @@
 		}
 		allTal();
 	});
+
 	//动态添加单项
 	$(document).on("click", ".appendLi", function(event) {
-			var _this = $(this).parents('.contentBox');
-			var newNum = Math.abs(parseInt(_this.find(".toTal>input").val()));
-			var _html = '<li class="navBox cf">\
+		var _this = $(this).parents('.contentBox');
+		var newNum = Math.abs(parseInt(_this.find(".toTal>input").val()));
+		var _html = '<li class="navBox cf">\
 					    	<div class="namePay fl">\
 					    		<input class="nameType" placeholder="请输入物品名称" type="text">\
 					    	</div>\
@@ -118,20 +120,22 @@
 					    	<div class="remove fl">删除本条</div>\
 					    	<input class="addpage fl" placeholder="添加备注" >\
 					    </li>';
-			_this.before(_html);
-			_this.find(".morePay").html(Math.abs(_this.find(".onlyPay>input").val() * _this.find(".toTal>input").val()))
-		})
-		//删除本条数据
+		_this.before(_html);
+		_this.find(".morePay").html(Math.abs(_this.find(".onlyPay>input").val() * _this.find(".toTal>input").val()))
+	})
+
+	//删除本条数据
 	$(document).on("click", ".remove", function(event) {
-			if ($(".navBox").size() > 2) {
-				$(this).parents('.navBox').remove();
-				allTal();
-			} else {
-				alert("已经最后一条了")
-				return false;
-			}
-		})
-		//值未空的边框变红提示
+		if ($(".navBox").size() > 2) {
+			$(this).parents('.navBox').remove();
+			allTal();
+		} else {
+			alert("已经最后一条了")
+			return false;
+		}
+	})
+
+	//值未空的边框变红提示
 	$(document).on('blur', '.navBox input', function() {
 		borderError($(this));
 	});
@@ -139,31 +143,33 @@
 	var tab1 = '<table class="paymentTable" width="900"><tbody>\
 				<tr><th width="200">物品名称</th><th>单价(元)</th><th>件数(件)</th><th>单品总价(元)</th><th width="300">备注</th></tr>',
 		tab3 = '</tbody><tfoot><td>合计</td><td colspan="2"></td><td class="sum"></td><td></td></tfoot></table>';
+
 	$(".makeTab").on('click', function() {
-			$(".paymentTable").remove();
-			var arr = new Array();
-			$(".navBox").each(function(index, el) {
-				var arrx = [];
-				$(this).find("input").each(function(index, el) {
-					var _this = $(this).parents('.navBox').find('input');
-					arrx[index] = _this.eq(index).val();
-					borderError($(this));
-				});
-				$(this).find(".morePay").each(function(index, el) {
-					arrx[4] = $(this).html();
-				});
-				arr.push(arrx)
+		$(".paymentTable").remove();
+		var arr = new Array();
+		$(".navBox").each(function(index, el) {
+			var arrx = [];
+			$(this).find("input").each(function(index, el) {
+				var _this = $(this).parents('.navBox').find('input');
+				arrx[index] = _this.eq(index).val();
+				borderError($(this));
 			});
-			console.log(arr)
-			var st = '';
-			$.each(arr, function(i, n) {
-				st += '<tr><td>' + arr[i][0] + '</td><td>' + arr[i][1] + '</td><td>' + arr[i][2] + '</td><td>' + arr[i][4] + '</td><td>' + arr[i][3] + '</td></tr>';
+			$(this).find(".morePay").each(function(index, el) {
+				arrx[4] = $(this).html();
 			});
-			$(".divUl").after(tab1 + st + tab3);
-			//求和
-			$('.sum').html($(".allTal").html());
-		})
-		// 红色边框提示
+			arr.push(arrx)
+		});
+		console.log(arr)
+		var st = '';
+		$.each(arr, function(i, n) {
+			st += '<tr><td>' + arr[i][0] + '</td><td>' + arr[i][1] + '</td><td>' + arr[i][2] + '</td><td>' + arr[i][4] + '</td><td>' + arr[i][3] + '</td></tr>';
+		});
+		$(".divUl").after(tab1 + st + tab3);
+		//求和
+		$('.sum').html($(".allTal").html());
+	})
+
+	// 红色边框提示
 	function borderError(thisobj) {
 		if (thisobj.hasClass('borderError')) {
 			thisobj.removeClass('borderError');
@@ -172,6 +178,7 @@
 			thisobj.addClass('borderError');
 		}
 	}
+
 	//统计全部的'单品总价'
 	function allTal() {
 		var sum = 0;
@@ -190,6 +197,7 @@
 				// obj.val('1');
 		}
 	}
+
 	//只能输入数字
 	function keyPress() {
 		var keyCode = event.keyCode;
