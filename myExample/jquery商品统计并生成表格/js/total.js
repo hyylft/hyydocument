@@ -126,7 +126,7 @@ $(document).on("click", ".appendLi", function(event) {
 
 //删除本条数据
 $(document).on("click", ".remove", function(event) {
-	if ($(".navBox").size() > 2) {
+	if ($(".navBox").size() > 1) {
 		$(this).parents('.navBox').remove();
 		allTal();
 	} else {
@@ -142,7 +142,7 @@ $(document).on('blur', '.navBox input', function() {
 //自动生成表格
 var tab1 = '<table class="paymentTable" width="900"><tbody>\
 			<tr><th width="200">物品名称</th><th>单价(元)</th><th>件数(件)</th><th>单品总价(元)</th><th width="300">备注</th></tr>',
-	tab3 = '</tbody><tfoot><td>合计</td><td colspan="2"></td><td class="sum"></td><td></td></tfoot></table>';
+	tab3 = '</tbody><tfoot><td>总件数</td><td class="numTotal" colspan="2"></td><td>合计</td><td class="sum" ></td></tfoot></table >';
 
 $(".makeTab").on('click', function() {
 	$(".paymentTable").remove();
@@ -157,9 +157,9 @@ $(".makeTab").on('click', function() {
 		$(this).find(".morePay").each(function(index, el) {
 			arrx[4] = $(this).html();
 		});
-		arr.push(arrx)
+		arr.push(arrx);
 	});
-	console.log(arr)
+	console.log(arr);
 	var st = '';
 	$.each(arr, function(i, n) {
 		st += '<tr><td>' + arr[i][0] + '</td><td>' + arr[i][1] + '</td><td>' + arr[i][2] + '</td><td>' + arr[i][4] + '</td><td>' + arr[i][3] + '</td></tr>';
@@ -167,6 +167,15 @@ $(".makeTab").on('click', function() {
 	$(".divUl").after(tab1 + st + tab3);
 	//求和
 	$('.sum').html($(".allTal").html());
+	//总件数
+	$(".divUl").find(".numType").each(function(index, n) {
+		var num = Number($(this).val());
+		num += num;
+		$(".numTotal").html(num - 2)
+		console.log(index)
+		console.log(num)
+	})
+	$(".numTotal").html()
 })
 
 // 红色边框提示
