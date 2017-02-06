@@ -173,6 +173,7 @@ $(".makeTab").on('click', function() {
 	});
 	$(".divUl").after(tab1 + st + tab3);
 	//总件数求和
+	console.log(num);
 	$(".numTotal").html(num);
 	//总价求和
 	$('.sum').html($(".allTal").html());
