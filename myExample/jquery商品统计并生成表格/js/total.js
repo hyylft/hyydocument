@@ -159,7 +159,6 @@ $(".makeTab").on('click', function() {
 		});
 		arr.push(arrx);
 	});
-	console.log(arr);
 	var st = '';
 	var num = new Number;
 	$.each(arr, function(i, n) {
@@ -170,7 +169,6 @@ $(".makeTab").on('click', function() {
 		}
 		st += '<tr><td>' + arr[i][0] + '</td><td>' + arr[i][1] + '</td><td>' + arr[i][2] + '</td><td>' + arr[i][4] + '</td><td>' + arr[i][3] + '</td></tr>';
 		num += Number(arr[i][2]);
-		console.log(num)
 
 	});
 	$(".divUl").after(tab1 + st + tab3);
