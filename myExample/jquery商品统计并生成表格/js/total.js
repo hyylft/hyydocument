@@ -161,21 +161,23 @@ $(".makeTab").on('click', function() {
 	});
 	console.log(arr);
 	var st = '';
+	var num = new Number;
 	$.each(arr, function(i, n) {
+		//假设物品名称或是单价为空时候 ,件数将不计算到总件数中,并且返回不做添加到列表
+		if (arr[i][0] == '' || arr[i][1] == '') {
+			arr[i][2] = 0;
+			return;
+		}
 		st += '<tr><td>' + arr[i][0] + '</td><td>' + arr[i][1] + '</td><td>' + arr[i][2] + '</td><td>' + arr[i][4] + '</td><td>' + arr[i][3] + '</td></tr>';
+		num += Number(arr[i][2]);
+		console.log(num)
+
 	});
 	$(".divUl").after(tab1 + st + tab3);
-	//求和
+	//总件数求和
+	$(".numTotal").html(num);
+	//总价求和
 	$('.sum').html($(".allTal").html());
-	//总件数
-	$(".divUl").find(".numType").each(function(index, n) {
-		var num = Number($(this).val());
-		num += num;
-		$(".numTotal").html(num - 2)
-		console.log(index)
-		console.log(num)
-	})
-	$(".numTotal").html()
 })
 
 // 红色边框提示
