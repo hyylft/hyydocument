@@ -1,66 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>document</title>
-    <style type="text/css">
-	a {
-		text-decoration: none;
-	}
-	* {
-		margin: 0;
-		padding: 0;
-	}
-	.inp {
-		width: 500px;
-		height: 40px;
-		line-height: 40px;
-	}
-	.act {
-		color: red;
-	}
-    </style>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li {
+			margin-bottom: 10px;
+			list-style: none;
+		}
+		.fontColor {
+			color: red;
+		}
+		.ulBox span {
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
-		<input class="inp" placeholder="选择地区" type="text">
-		<div class="adresBox">
-			<a href="javascript:;">天津</a>
-			<a href="javascript:;">北京</a>
-			<a href="javascript:;">云南</a>
-			<a href="javascript:;">湖南</a>
-			<a href="javascript:;">青岛</a>
-			<a href="javascript:;">四川</a>
-			<a href="javascript:;">河北</a>
-			<a href="javascript:;">杭州</a>
-			<span class="close">关闭</span>
-			<span class="closeAll">清空所有</span>
-		</div>
+	<input type="text" placeholder="请点击选择地址" class="inp">
+	<ul class="ulBox">
+		<li>
+			<span>北京</span>
+			<span>天津</span>
+			<span>上海</span>
+			<span>湖南</span>
+		</li>
+		<li>
+			<span>青海</span>
+			<span>福建</span>
+			<span>云南</span>
+			<span>四川</span>
+		</li>
+	</ul>
+	<button class="allDelete">全部清除</button>
 </body>
-<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(".inp").click(function(){
-	$(".adresBox").show();
-})
-$(".close").click(function(){
-	$(".adresBox").hide();
-})
-$(".adresBox a").click(function(){
-	var thishtml = $(this).html();
-
-	if($(this).hasClass('act')){
-		var oldhtml = $(".inp").val();
-		$(".inp").val(oldhtml.replace(thishtml+' ',''));
-		$(this).removeClass('act');
-	}else{
-		var oldhtml = $(".inp").val();
-		$(this).addClass('act');
-		$(".inp").val(thishtml+' '+oldhtml)
-	}
-})
-
-$(".closeAll").click(function(){
-	$(".inp").val('');
-	$(".adresBox a").removeClass('act')
-})
+<script src="jquery-1.7.2.min.js"></script>
+<script>
+	$(document).on('click','.ulBox span',function(){
+		var val = $(".inp").val();
+		if($(this).hasClass('fontColor')){
+			$(".inp").val(val.replace($(this).html(),''));
+			$(this).removeClass('fontColor');
+		}else{
+			$(this).addClass('fontColor');
+			$(".inp").val(val+$(this).html());
+		}
+	})
+	$(".allDelete").click(function(){
+		$(".inp").val('');
+		$(".ulBox span").removeClass('fontColor');
+	})
 </script>
 </html>

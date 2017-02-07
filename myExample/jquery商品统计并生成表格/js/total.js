@@ -165,7 +165,7 @@ $(".makeTab").on('click', function() {
 		//假设物品名称或是单价为空时候 ,件数将不计算到总件数中,并且返回不做添加到列表
 		if (arr[i][0] == '' || arr[i][1] == '') {
 			arr[i][2] = 0;
-			return;
+			return; //返回当次,但是继续循环,不使用return false;使用return则返回后不再循环
 		}
 		st += '<tr><td>' + arr[i][0] + '</td><td>' + arr[i][1] + '</td><td>' + arr[i][2] + '</td><td>' + arr[i][4] + '</td><td>' + arr[i][3] + '</td></tr>';
 		num += Number(arr[i][2]);
