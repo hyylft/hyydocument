@@ -31,18 +31,18 @@
 			$('#id1,#id2,#id3').html('');
             $.each(data1[0].user,function(index, el) {
                 d1 += "用户名："+ el.userName +" 密码："+el.passWord;
-				$('#id1').html(d1);  
             });
             $.each(data2[0],function(index, el) {
                 d2 += "姓名"+ el.name +" 年龄："+el.age +'<br/>';
-				$('#id2').html(d2);
             });
+				$('#id1').html(d1);  
+				$('#id2').html(d2);
 	 		var login_status = data3[0].hatch;
 		 		if(login_status==1&&login_status!=''){
 		            $.each(data3[0],function(index, el) {
 		            	d3 = "tyt昵称:"+data3[0].user.userName+"<br/>账号:"+data3[0].user.cellPhone+"<br/>stutus:"+data3[0].msg;
-						$('#id3').html(d3);
 		            });
+					$('#id3').html(d3);
 		 		}
             console.log(data3) 
 		}); 
