@@ -40,13 +40,13 @@
 <body>
 	<button class="btn">生成表格</button>
 </body>
-<script src="jquery-1.7.2.min.js"></script>
+<script src="js/jquery-1.7.2.min.js"></script>
 <script>  
 	var tab1 = '<table class="paymentTable" width="900"><thead><tr><th width="200">姓名</th><th>身高</th><th>年龄</th><th>喜欢颜色</th></tr></thead><tbody>';
 	var tab2 = '</tbody></table >';
 	$(document).on('click','.btn',function(){
 		$.ajax({
-			url: 'test.json',
+			url: 'js/test.json',
 			type: 'get',
 			dataType: 'json',
 			success:function(data) {
