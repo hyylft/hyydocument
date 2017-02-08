@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax测试</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		.paymentTable {
+			margin: 0 auto;
+		}
+		.paymentTable tr th {
+		    text-align: center;
+		    line-height: 38px;
+		    border: 1px solid #ccc;
+		    height: 38px;
+		    background: #f6f6f6;
+		    color: #333;
+		    font-size: 14px;
+		}
+		.paymentTable tr td {
+		    text-align: center;
+		    line-height: 36px;
+		    border: 1px solid #ccc;
+		    height: 36px;
+		    color: #333;
+		    font-size: 14px;
+		}
+		.paymentTable tfoot td {
+			font-weight: bold;
+		    color: #333;
+		    font-size: 14px;
+		    background: #a9a9a9;
+		    border: 1px solid #eaeaea;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn">生成表格</button>
+</body>
+<script src="jquery-1.7.2.min.js"></script>
+<script>  
+	var tab1 = '<table class="paymentTable" width="900"><thead><tr><th width="200">姓名</th><th>身高</th><th>年龄</th><th>喜欢颜色</th></tr></thead><tbody>';
+	var tab2 = '</tbody></table >';
+	$(document).on('click','.btn',function(){
+		$.ajax({
+			url: 'test.json',
+			type: 'get',
+			dataType: 'json',
+			success:function(data) {
+				var str1 = '';
+				$.each(data,function(index, el) {
+					//使用$.each方法遍历返回的数据date,插入到id为#result中  
+					str1 += '<tr><td>'+el.name+'</td><td>'+el.height+'</td><td>'+el.age+'</td><td>'+el.lovecolor+'</td></tr>';
+				});
+			    $(".btn").after(tab1 + str1 +tab2); 
+				console.log("success");
+			},
+			error:function(XHR, textStatus, errorThrown) {
+				console.log("error");
+			}
+		});
+	})
+</script>
+</html>
