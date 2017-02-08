@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax同时多个请求</title>
+</head>
+<body>
+	<button class="btn">发起多个ajax请求</button>
+	<div id="id1"></div>
+	<div id="id2"></div>
+	<div id="id3"></div>
+</body>
+<script src="jquery-1.7.2.min.js"></script>
+<script>
+	$('.btn').click(function() { 
+		//ajax多个文件一起请求
+		$.when($.ajax({
+			url:"req.json",//localhost requset
+			type:"get"
+		}),$.ajax({
+			url:"test.json",//localhost requset
+			type:"get"
+		}), $.ajax({
+			url:"http://www.teyuntong.cn/tytpc/ajx/getUserPubGoodsCount",//tyt load requset
+			type:"post",
+			async:true,
+			dataType:"jsonp",
+			jsonp:"jsoncallback"	
+		})).done(function(data1, data2,data3){ 
+            var d1 = '',d2 = '',d3 = '';
+			$('#id1,#id2,#id3').html('');
+            $.each(data1[0].user,function(index, el) {
+                d1 += "用户名："+ el.userName +" 密码："+el.passWord;
+				$('#id1').html(d1);  
+            });
+            $.each(data2[0],function(index, el) {
+                d2 += "姓名"+ el.name +" 年龄："+el.age +'<br/>';
+				$('#id2').html(d2);
+            });
+	 		var login_status = data3[0].hatch;
+		 		if(login_status==1&&login_status!=''){
+		            $.each(data3[0],function(index, el) {
+		            	d3 = "tyt昵称:"+data3[0].user.userName+"<br/>账号:"+data3[0].user.cellPhone+"<br/>stutus:"+data3[0].msg;
+						$('#id3').html(d3);
+		            });
+		 		}
+            console.log(data3) 
+		}); 
+	}); 
+</script>
+</html>

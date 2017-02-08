@@ -1,0 +1,12 @@
+{
+
+	"hatch": 1,
+	"code": 200,
+	"msg": "已经登陆",
+	"user": [{
+		"cellPhone": 18287197828,
+		"city": "昆明市",
+		"passWord": 123123,
+		"userName": "hyy"
+	}]
+}
