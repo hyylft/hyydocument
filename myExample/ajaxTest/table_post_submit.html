@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	
+	.demo{width:420px; margin:30px auto 0 auto}
+	.demo p{height:42px; line-height:42px}
+	.input{width:200px; line-height:24px; height:24px; padding:2px; border:1px solid #d3d3d3}
+	.btn{-webkit-border-radius: 3px;-moz-border-radius:3px;padding:6px 16px; margin-top:6px; cursor:pointer;background: #360;border: 1px solid #390;color:#fff}
+	#msg{margin-left:30px; line-height:24px; color:#f30}
+	#output{margin-top:10px}
+</style>
+<body>
+	<form id="my_form" action="js/submit.php" method="post">  
+	   <p>姓名：<input type="text" name="uname" id="uname" class="input"></p> 
+	   <p>性别：<input type="radio" name="sex" value="1" checked> 男 <input type="radio" name="sex" value="2"> 女 </p> 
+	   <p>年龄：<input type="text" name="age" id="age" class="input" style="width:50px"></p> 
+	   <p style="margin-left:30px"><input type="submit" class="btn" value="提交"> 
+	   <span id="msg"></span></p> 
+	</form> 
+	<div id="output"></div> 
+</body>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.form.js"></script> 
+<script>
+$(function(){ 
+    var options = {  
+        //http://www.helloweba.com/view-blog-236.html   (options的参数配置)
+        beforeSubmit: showRequest,  //提交前处理 
+        success: showResponse,  //处理完成 
+        resetForm: true,  
+        dataType:  'json'  
+    };  
+  
+    $('#my_form').submit(function() {  
+        $(this).ajaxSubmit(options);  
+        return false; 
+    });  
+}); 
+ 
+function showRequest(formData, jqForm, options) {  
+    var uname = $("#uname").val(); 
+    if(uname==""){ 
+        $("#msg").html("姓名不能为空！"); 
+        return false; 
+    } 
+     
+    var age = $("#age").val(); 
+    if(age==""){ 
+        $("#msg").html("年龄不能为空！"); 
+        return false; 
+    } 
+    $("#msg").html("正在提交..."); 
+     
+     
+    return true;  
+}  
+  
+function showResponse(responseText, statusText)  {  
+    $("#msg").html('提交成功'); 
+    var sex = responseText.sex==1?"男":"女"; 
+    $("#output").html("姓名："+responseText.uname+" 性别："+sex+" 年龄："+responseText.age); 
+} 
+</script>
+</html>
