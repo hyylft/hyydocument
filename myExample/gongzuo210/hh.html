@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="" content="" />
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        html {
+            overflow: hidden;
+        }
+        
+        body {
+            overflow: auto;
+            width: 120%;
+        }
+        .page {
+            height: 120%;
+            min-height: 80%;
+            border: 1px dashed;
+            width: 216px;
+        }
+        .page>div {
+        	position: relative;
+        }
+        .page .tit_box {
+        	width: 100%;
+        	height: 60px;
+        	line-height: 60px;
+            border-bottom: 1px dashed;
+        }
+        .page  .box {
+        	width: 100px;
+        	height: 200px;
+        	border: 1px solid #000;
+        	position: absolute;
+        	right: -100px;
+        	top: 0;
+        	display: none;
+			background: yellow;
+        }
+        .kkll {
+        	width: 300px;
+        	height: 100%;
+        	background: red;
+        	position: absolute;
+        	left: 216px;
+        	top: 0;
+        	overflow-y: auto;
+        }
+        .ggg {
+        	height: 1000px;
+        	width: 300px;
+        	background: red; 
+        }
+        .tol_box {
+        	width: 216px;
+        	height: 120%;
+        }
+    </style>
+</head>
+
+<body>
+<div class="tol_box">
+	<div class="kkll">
+		<div class="ggg">
+			<a href="#">gdfgdfgdfgdfg</a>
+		</div>
+	</div>
+    <div class="page">
+        <div>
+			<div class="tit_box">dddddddddddd</div>
+			<div class="box">123</div>
+        </div>
+        <div>
+			<div class="tit_box">rrrrrrrrrrrrrrr</div>
+			<div class="box">123</div>
+        </div>
+        <div>
+			<div class="tit_box">yyyyyyyyyyyyyyyy</div>
+			<div class="box">123</div>
+        </div>
+        <div>
+			<div class="tit_box">uuuuuuuuuuuuuuuuuuuu</div>
+			<div class="box">123</div>
+        </div>
+        <div>
+			<div class="tit_box">iiiiiiiiiiiiiiii</div>
+			<div class="box">123</div>
+        </div>
+        <div>
+			<div class="tit_box">nnnnnnnnnnnnnnnnnn</div>
+			<div class="box">123</div>
+        </div>
+        <div>
+			<div>123121211</div>
+			<div class="box">123</div>
+        </div>
+        <div>
+			<div class="tit_box">ddddddddddddd</div>
+			<div class="box">123</div>
+        </div>
+        <div>
+			<div class="tit_box">xxxxxxxxxxxxxxxxx</div>
+			<div class="box">123</div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="jquery-1.7.2.min.js"></script>
+<script>
+	$(".page .tit_box").mouseenter(function(event) {
+		/* Act on the event */
+		$(".page .box").hide();
+		var _html = $(this).html();
+		$(this).siblings('.box').show().html(_html);
+	});
+	$(".page>div").mouseleave(function(event) {
+		/* Act on the event */
+		$(".page .box").hide();
+	});
+</script>
+</html>

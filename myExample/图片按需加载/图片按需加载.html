@@ -34,8 +34,8 @@
                 //加载过的图片不需要重复去做判断
                 for (var i=0; i<aImg.length; i++) {
                     //就算是图片全部加载完成了，这个循环还是会执行
-                    var j = aImg[i].getBoundingClientRect();
-                    if ( !aImg[i].isLoad && j.top < document.documentElement.clientHeight ) {
+                    var j = aImg[i].getBoundingClientRect().top-20;
+                    if ( !aImg[i].isLoad && j < document.documentElement.clientHeight ) {
                         aImg[i].style.opacity = 0;
                         aImg[i].isLoad = true;
                         aImg[i].onload = function() {
@@ -45,7 +45,7 @@
                                 left: 0,
                                 top: 0,
                                 opacity: 100
-                            }, 1000, 'bounceOut');
+                            }, 1500, 'easeBothStrong');
                         }
                         aImg[i].src = aImg[i].getAttribute('_src');
 
