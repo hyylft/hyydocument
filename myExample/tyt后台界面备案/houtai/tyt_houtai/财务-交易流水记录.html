@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>交易-交易流水记录</title>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+<link href="css/theme.css" type="text/css" rel="stylesheet">
+<link href="css/font-awesome.css" type="text/css" rel="stylesheet">
+<link href="css/page.css" type="text/css" rel="stylesheet">
+<link href="css/finance.css" type="text/css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+    
+</head>
+<body class="theme-blue">
+
+
+<div class="content">
+  <div class="header"> 
+    <ul class="breadcrumb">
+      <li>交易管理</li>
+      <li class="active">交易流水记录</li>
+    </ul>
+  </div>
+  <div class="main-content"> 
+    
+    <!--搜索条件-->
+    <div class="searchCondition">
+      <ul class="o-hidden">
+        <li>
+          <label>用户姓名：</label>
+          <input class="input180" name="" type="text">
+        </li>
+        <li>
+          <label>手机号：</label>
+          <input class="input180" name="" type="text">
+        </li>
+        <li>
+          <label>运单号：</label>
+          <input class="input180" name="" type="text">
+        </li>
+        <li>
+          <label>出入账日期：</label>
+          <input class="input180" name="" type="text">
+        </li>
+        <li>
+          <label>交易类型：</label>
+          <select class="select180">
+            <option selected="select">转入信息费</option>
+            <option>支付信息费</option>
+            <option>退信息费</option>
+            <option>转出信息费</option>
+            <option>异常上报</option>
+            <option>提现</option>
+          </select>
+        </li>
+      </ul>
+      <!--<div class="div-button"><input type="button" class="button" value="查询"><input type="button" class="button" value="重置"></div>--> 
+    </div>
+    
+    <!--页面信息-->
+    <div class="pageMessage">
+      <div class="messageLeft">
+        <ul>
+          <li>
+            <input type="button" class="button" value="查询">
+          </li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    
+       <!--内容列表-->
+      <table width="100%" border="0" class="contentList">
+        <tr class="noBg">
+          <th>ID</th><th>用户姓名</th><th>手机号</th><th>出入账日期</th><th>交易类型</th><th>转账银行</th><th>运单号</th><th>金额</th>
+        </tr>
+
+        <tr>  
+          <td>1</td>
+          <td>张三</td>
+          <td>15812111212</td>
+          <td>2016-12-12 12:12:12</td>
+          <td>提现</td>
+          <td>支付宝</td>
+          <td></td>
+          <td>+3</td>
+        </tr>
+        <tr>  
+          <td>2</td>
+          <td>张三</td>
+          <td>15812111212</td>
+          <td>2016-12-12 12:12:12</td>
+          <td>提现</td>
+          <td>支付宝</td>
+          <td>E1212121</td>
+          <td>+93</td>
+        </tr>
+        <tr>  
+          <td>3</td>
+          <td>张三</td>
+          <td>15812111212</td>
+          <td>2016-12-12 12:12:12</td>
+          <td>提现</td>
+          <td></td>
+          <td>E1212121</td>
+          <td>+903</td>
+        </tr>
+        <tr>  
+          <td>4</td>
+          <td>张三</td>
+          <td>15812111212</td>
+          <td>2016-12-12 12:12:12</td>
+          <td>提现</td>
+          <td>支付宝</td>
+          <td>E1212121</td>
+          <td>+44</td>
+        </tr>
+      </table>
+    <div class="footer">
+      <ul class="pagination pull-left">
+        <li class="disabled"><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li class="disabled"><a href="#">...</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+      <div class="paginationRight"> <span>共${maxPage}页，到第
+        <input type="text" class="input90 mlr3" id="input_current_page" value="${pageNo}" size="1">
+        页 </span>
+        <span>
+        <input type="button" class="btn btn-default mt-5" value="确定" onclick="query($('#input_current_page').val())">
+        </span> </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+ </div>
+ 
+ <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+ <script type="text/javascript" src="js/bootstrap.js"></script>
+
+</body>
+</html>

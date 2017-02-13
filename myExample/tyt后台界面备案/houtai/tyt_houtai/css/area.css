@@ -1,0 +1,151 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/*body {
+	 font:normal 14px '微软雅黑', Verdana, Geneva, sans-serif;
+	}*/
+	
+.mtl20 {
+    margin:20px 0 0 20px;	
+	}
+	
+ul {
+	list-style: none;
+	white-space: nowrap;
+}
+.clear {
+	clear: both;
+}
+
+.positionInput {
+   width:232px;
+   height:25px;
+   line-height:25px;
+   border:1px solid #ccc;
+   padding-left:5px;
+   font:normal 14px '微软雅黑', Verdana, Geneva, sans-serif;	
+	}
+	
+.wrap {
+   position:relative;	
+	}
+	
+#boxDiv {
+   width:450px !important;
+   height:300px;
+   background-color:#fff;
+   position:absolute;
+   margin:20px 0 0 20px;
+   z-index:999 !important;	
+	}
+	
+.closeBtn {
+  position:absolute;
+  right:0px;
+  top:0px;
+  cursor:pointer;	
+	}
+
+#tabs {
+	width:424px !important;
+	position:relative !important;
+	z-index:999 !important;
+}
+	
+#tabs ul li {
+	width:134px;
+	height: 30px;
+	background:#fff;
+	float: left !important;
+	margin-right:9px;
+	text-align: center;
+	cursor: pointer;
+}
+	
+#tabs ul li input {
+   width:134px;
+   height:30px;
+   background:#ddd url(../images/selectDown.png) no-repeat 112px center;
+   *padding-top:2px;
+   padding-top:2px\9;
+   text-align:center;
+   font:normal 14px '微软雅黑', Verdana, Geneva, sans-serif;
+   cursor:pointer;
+   border:none;
+   outline:none;
+   float:left;
+   color:#4771ea;
+   	}
+
+#tabs ul li input.active {
+   background-color:#4771ea;
+   color:#fff;
+   border:1px solid #4771ea;
+   border-bottom:none;
+   outline:none;
+	}
+
+#divs {
+	height: 260px;
+	position: relative;
+}
+
+#divs div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 400px !important;
+	height: 260px;
+	background-color: #fff;
+    border:1px solid #4771ea;
+	display:none;
+	padding:10px;
+}
+
+#divs ul li{
+	float: left !important;
+	height:25px;
+	line-height:25px;
+	padding:2px 8px;
+	margin:1px 0;
+	cursor:pointer;
+	font-size:14px;
+}
+#divs ul li:hover,
+#divs ul li.active {
+	background: #ddd;
+	color: #194ee7;
+}
+
+#divs .btnP {
+  width:400px;
+  text-align:center;
+  position:absolute;
+  bottom:0px;
+  left:23%;	
+	}
+	
+#divs .btnP input {
+  width:100px;
+  height:30px;
+  float:left;
+  border:none;
+  margin-right:10px;
+  font:normal 14px '微软雅黑', Verdana, Geneva, sans-serif;
+  cursor:pointer;
+  outline:0;
+ 	}
+	
+#divs .btnP .confirmBtn {
+  background-color:	#4771ea;
+  color:#fff;
+	}
+	
+#divs .btnP .clearBtn {
+  background-color:#ccc;	
+	}

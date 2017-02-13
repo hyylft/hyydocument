@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>违约-编辑</title>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+<link href="css/theme.css" type="text/css" rel="stylesheet">
+<link href="css/font-awesome.css" type="text/css" rel="stylesheet">
+<link href="css/page.css" type="text/css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+    
+    <style>
+          .editCondition ul li {
+            width: 380px!important;
+          }
+          .editCondition ul li label {
+              height: 25px!important;
+              line-height: 25px!important;
+              float: left!important;
+              width: 100px!important;
+              text-align: right!important;
+          }
+    </style>
+</head>
+<body class="theme-blue">
+
+
+<div class="content">
+  <div class="header"> 
+    <ul class="breadcrumb">
+      <li>违约/异常</li>
+      <li class="active">编辑页面</li>
+    </ul>
+  </div>
+  <div class="main-content"> 
+    
+    <!--搜索条件-->
+    <div class="editCondition">
+      <ul class="o-hidden">
+        <li>
+          <label>上报类型：</label> 
+          <span>时间延长的时间延长的时间延长的时间延长的</span>
+        </li>
+        <li>
+          <label>上报时间：</label>
+          <span>2016-11-12 12:12:12</span>
+        </li>
+        <li>
+          <label>运单号：</label>
+          <span>E121213131</span>
+        </li>
+        <li>
+          <label>信息信息金额：</label>
+          <span>900</span>
+        </li>
+        <li>
+          <label>车主账号：</label>
+          <span>19613131313</span>
+        </li>
+        <li>
+          <label>发货方账号：</label>
+          <span>19613131313</span>
+        </li>
+        <li>
+          <label>上报人身份：</label>
+          <span>车主方</span>
+        </li>
+        <li>
+          <label>操作人：</label>
+          <span>胡波</span>
+        </li>
+      </ul>
+    </div>
+    <div class="upCont">
+      <em>上报内容：</em>
+      <textarea class="note" name="" cols="" rows=""></textarea>
+    </div>
+    <div class="pageContext">
+      <h2>处理内容</h2>
+      <div class="contBox cf">
+        <div class="contTit fl">处理记录</div>
+        <div class="contAbout fl">
+          <div>
+            <span class="dataCont">10.21</span><span class="textCont">货主方诈骗</span>
+          </div>
+          <div>
+            <span class="dataCont">10.22</span><span class="textCont">车主方有问题</span>
+          </div>
+        </div>
+      </div>
+      <div class="nowSuggest">
+        <label class="nowlb" for=""><i class="xing">*</i>本次处理意见</label><textarea id="TextArea"  onkeyup="strLenCalc($(this), 'checklen', 200);"  class="note"  onkeyup="words_deal();"  name="" cols="" rows="" placeholder="最多输入100个字"></textarea><span id="checklen" class="error"></span>
+        </div>
+      <div class="suggestBox">
+        <label class="nowlb" for=""><i class="xing">*</i>是否为最终意见</label>
+        <label class="labelrad" for="ra1"><input id="ra1" name="labelradio" type="radio">是</label>
+        <label class="labelrad" for="ra2"><input class="checked" id="ra2" name="labelradio" type="radio" checked>否</label>
+        </div>
+      <div class="suggestcheck" style="display: none;">
+        <label class="nowlb" for=""><i class="xing">*</i>信息费建议分配</label>
+        <label class="labelrad" for="">车主：</label><input type="text" placeholder="">
+        <label class="labelrad" for="">发货方：</label><input type="text" placeholder=""><span class="error">输入金额大于所交信息费</span>
+        </div>
+    </div>
+    <div class="subBtn">
+      <button class="button">提交</button>
+    </div>
+    
+  </div>
+ </div>
+ 
+ <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+ <script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript">
+  $(".contTit").css('lineHeight',$(".contBox").height()+'px');
+  $("#ra1,#ra2").click(function(){
+    $("#ra1,#ra2").removeClass('checked');
+    $(this).addClass('checked');
+    if(!$("#ra2").hasClass('checked')) {
+      $(".suggestcheck").show();
+    }else{
+      $(".suggestcheck").hide();
+    }
+  })
+
+
+
+  //限制字数
+$(function() { 
+  $("textarea").keyup(); 
+}); 
+
+function strLenCalc(obj, checklen, maxlen) { 
+　　var v = obj.val(), 
+    charlen = 0, 
+    maxlen = !maxlen ? 200 : maxlen, 
+    curlen = maxlen, 
+    len = v.length; 
+　　for(var i = 0; i < v.length; i++) { 
+　　　　if(v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) { 
+      curlen -= 1; 
+    } 
+  } 
+　　if(curlen >= len) { 
+    $("#"+checklen).html("还可输入 <strong>"+Math.floor((curlen-len)/2)+"</strong> 个字").css('color', '#333'); 
+    $(".subBtn button").removeAttr("disabled").css('background','#414959'); 
+  } else { 
+    $("#"+checklen).html("已经超过 <strong>"+Math.ceil((len-curlen)/2)+"</strong> 个字").css('color', '#FF0000'); 
+    $(".subBtn button").attr("disabled", "disabled").css('background','#ccc'); 
+  } 
+} 
+$(".subBtn button").click(function(){
+  if ($("#ra2").hasClass('checked')) {
+    alert('已提交')
+  }
+})
+
+$(".suggestcheck input").blur(function(){
+  if(this.value==''){
+    return false;
+  }else{
+    if(!/^\d+$/.test(this.value)){
+        alert('请输入正整数');
+        this.value='';
+        return;
+      }
+  }
+})
+
+</script>
+</body>
+</html>
