@@ -3,9 +3,90 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+		#receiptInfo {
+			display: block;
+			width: 140px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			border-radius: 20px;
+			background: #ccc;
+			border: 1px solid #333;
+			overflow: hidden;
+		}
+		.receiptInfo span {
+			float: left;
+			display: inline-block;
+			width: 100px;
+			height: 40px;
+			border-radius: 20px 0 0 20px;
+		}
+		.receiptInfo em {
+			float: left;
+			display: inline-block;
+			width: 40px;
+			border-radius: 0 20px 20px 0;
+			height: 40px;
+			background: #999;
+			font-style: normal;
+		}
+		td {
+			height: 30px;
+			cursor: pointer;
+		}
+		.phoneHide {
+			border: 1px solid #ccc;
+		}
+	</style>
 </head>
+	<table>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td class="phoneHide">18287197828</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td class="phoneHide">18882822828</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td class="phoneHide">12345678912</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td class="phoneHide">78945612312</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+ <div id="receiptInfo" class="receiptInfo" style="display: none;"><span></span><em>复制</em></div>
+<body>
+<script src="jquery-1.7.2.min.js"></script>
 <script>
 	window.onload = function(){
+		// var str = '18287197828';
+		//plusXing(str,firstLen,endLen)
+		//firstLen:前面保留的手机号码位数
+		//endLen:后面保留的手机号码位数
+		$(".receiptInfo em").click(function(event) {
+			/* Act on the event */
+			 fuzhi()
+		});
+		var _thisHtml;
+		$('tbody').find('.phoneHide').each(function(){
+			_thisHtml = $(this).html();
+			$(this).html(plusXing(_thisHtml,3,4))
+			$(this).myHoverTip('receiptInfo',_thisHtml);
+			console.log(_thisHtml)
+		})
 		function plusXing (str,firstLen,endLen) {
 		    var len = str.length-firstLen-endLen;
 		    var xing = '';
@@ -15,16 +96,53 @@
 		    return str.substr(0,firstLen)+xing+str.substr(str.length-endLen);
 		}
 
-		var str = '18287197828';
-
-		//plusXing(str,firstLen,endLen)
-		//firstLen:前面保留的手机号码位数
-		//endLen:后面保留的手机号码位数
-		alert(plusXing(str,3,4));
+		function fuzhi(){ 
+			var codeVal=$("#receiptInfo span").html(); 
+			// alert(codeVal); 
+			if (navigator.userAgent.toLowerCase().indexOf('ie') > -1) { //IE浏览器 
+				clipboardData.setData('Text', codeVal); 
+				alert("已经复制到剪切板"); 
+			} else { 
+				prompt("请复制:", codeVal); 
+			} 
+			window.clipboardData.setData("Text",codeVal); 
+		} 
 
 	}
-</script>
-<body>
+
+
+
+
+		/** 
+	 * 鼠标移上去显示层 
+	 * @param divId 显示的层ID 
+	 * @returns 
+	 */  
+	$.fn.myHoverTip = function(divId,_thisHtml) {  
+	    var div = $("#" + divId),
+	    	span = div.find('span'); //要浮动在这个元素旁边的层  
+	    div.css("position", "absolute");//让这个层可以绝对定位  
+	    var self = $(this); //当前对象  
+	    self.hover(function() {  
+	        div.css("display", "block");  
+	        span.html(_thisHtml)
+	        var p = self.position(); //获取这个元素的left和top  
+	        var x = p.left;//获取这个浮动层的left  
+	        var docWidth = $(document).width();//获取网页的宽  
+	        if (x > docWidth - div.width() - 20) {  
+	            x = p.left - div.width();  
+	        }  
+	        div.css("left", x-10);  
+	        div.css("top", p.top-40);  
+	        div.show();  
+	    },  
+	    function() {  
+	        // div.css("display", "none");  
+	    }  
+	    );  
+	    return this;  
+	} 
+</script> 
 
 </body>
 </html>

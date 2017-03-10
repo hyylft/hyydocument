@@ -1,0 +1,298 @@
+<!DOCTYPE html>  
+<head>  
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />  
+<title>test html FileReader</title>  
+<style type="text/css">  
+html,body,header,footer,div,ul,li,h1,h2,h3,h4,h5,h6,label,input,textarea,p,span,a{  
+    padding: 0;  
+    margin: 0;  
+}  
+img {  
+    border: 0;  
+}  
+em,strong{  
+    font-weight: normal;  
+    font-style: normal;  
+}  
+ul {  
+    list-style: none;  
+}  
+h1,h2,h3,h4,h5,h6 {  
+    font-weight: normal;  
+    font-size: 100%;  
+}  
+a,a:after{  
+    text-decoration:none;  
+}  
+.photo_wrap{  
+    clear:both;  
+}  
+.photo_wrap li{  
+    margin:10px;  
+    width:150px;  
+    float:left;  
+}  
+.photo_box {  
+    height:150px;  
+    width:150px;  
+    overflow:hidden;  
+    position:relative;  
+}  
+.photo_box .img1{  
+    height:150px;  
+}  
+.photo_box .img2{  
+    width:150px;  
+}  
+.upload_result{  
+    height:50px;  
+}  
+.btns{  
+    position:relative;  
+    height:40px;  
+    width:100px;  
+    float:left;  
+}  
+.btn{  
+    height:40px;  
+    line-height:40px;  
+    color:#FFF;  
+    display:block;  
+    border-radius:3px;  
+    text-align:center;  
+    background-color: #FF5581; /* Old browsers */  
+    background-image: -moz-linear-gradient(top,#FA7B9C 0%,  #FF5581 100%); /* FF3.6+ */  
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FA7B9C), color-stop(100%,#FF5581)); /* Chrome,Safari4+ */  
+    background-image: -webkit-linear-gradient(top,#FA7B9C 0%,  #FF5581 100%); /* Chrome10+,Safari5.1+ */  
+    background-image: -o-linear-gradient(top,#FA7B9C 0%, #FF5581 100%); /* Opera 11.10+ */  
+    background-image: -ms-linear-gradient(top,#FA7B9C 0%, #FF5581 100%); /* IE10+ */  
+    background-image: linear-gradient(to bottom,#FA7B9C 0%, #FF5581 100%); /* W3C */  
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FA7B9C', endColorstr='#FF5581',GradientType=0 ); /* IE6-8 */  
+    box-shadow:0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 2px rgba(0, 0, 0, 0.3);  
+}  
+.btn_add_pic{  
+    width:100px;  
+    position:absolute;  
+    top:0;  
+    left:0;  
+}  
+.btn_upload{  
+    width:100px;  
+    margin:0 10px 10px;  
+    float:left;  
+}  
+.btn:hover,  
+.btn_cur{  
+    background-color: #FB99B1; /* Old browsers */  
+    background-image: -moz-linear-gradient(top,#FB99B1 0%,  #FF5581 100%); /* FF3.6+ */  
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FB99B1), color-stop(100%,##FF5581)); /* Chrome,Safari4+ */  
+    background-image: -webkit-linear-gradient(top,#FB99B1 0%,  #FF5581 100%); /* Chrome10+,Safari5.1+ */  
+    background-image: -o-linear-gradient(top,#FB99B1 0%, #FF5581 100%); /* Opera 11.10+ */  
+    background-image: -ms-linear-gradient(top,#FB99B1 0%, #FF5581 100%); /* IE10+ */  
+    background-image: linear-gradient(to bottom,#FB99B1 0%, #FF5581 100%); /* W3C */  
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FB99B1', endColorstr='#FF5581',GradientType=0 ); /* IE6-8 */  
+}  
+.file_input_wrap{  
+    position:absolute;  
+    top:0;  
+    left:0;  
+    width:100px;  
+    height:40px;  
+}  
+.file_input_wrap label{  
+    width:100%;  
+    height:100%;  
+    display:block;  
+    opacity:0;  
+    cursor:pointer;  
+}  
+.file_input_wrap input{  
+    opacity:0;  
+    filter:alpha(opacity=0);/*ie8及以下*/  
+    position:absolute;  
+    top:7px;  
+    right:173px;  
+    cursor:pointer;  
+    width:95px;  
+}  
+.photo_box .icon_pos{  
+    height:20px;  
+    width:20px;  
+    display:block;  
+    position:absolute;  
+    right:0;  
+    bottom:0;  
+}  
+.photo_box .loading{  
+    height:10px;  
+    display:block;  
+    position:absolute;  
+    left:0;  
+    bottom:0;  
+    background-image:url(loading.gif);  
+}  
+.sucess_icon{  
+    /*background-image:url(icons_01.png);  */
+    background-position:0 0;  
+}  
+.error_icon{  
+    /*background-image:url(icons_01.png);  */
+    background-position:-20px 0;  
+}  
+</style>  
+</head>  
+  
+<body>  
+<div class="btns">  
+    <a class="btn btn_add_pic" id="J_add_pic" href="javascript:;">添加图片</a>  
+    <div class="file_input_wrap">  
+        <input type="file" id="file" name="file" accept="image/*"  onChange="fileInfo(this,$(this),0)" />  
+        <label id="J_add_area"></label>  
+    </div>  
+</div>  
+<a class="btn btn_upload" id="J_upload" href="javascript:;">开始上传</a>  
+<div id="J_photo_wrap">  
+    <ul class="photo_wrap">  
+    </ul>  
+</div>  
+</body>  
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>  
+<script type="text/javascript">   
+    var img_index = new Array();  
+      
+    function upload_img(){  
+        var j=0;  
+        img('http://localhost/img_upload/upload.php');  
+        function img(imgUrl){  
+            //1.创建XMLHTTPRequest对象  
+            if (img_index.length > 0){  
+                var singleImg = img_index[j];  
+                console.log(singleImg)
+                var xmlhttp;  
+                if (window.XMLHttpRequest) {  
+                    //IE7+, Firefox, Chrome, Opera, Safari  
+                    xmlhttp = new XMLHttpRequest;  
+                      
+                    //针对某些特定版本的mozillar浏览器的bug进行修正  
+                    if (xmlhttp.overrideMimeType) {  
+                        xmlhttp.overrideMimeType('text/xml');  
+                    };  
+                } else if (window.ActiveXObject){  
+                    //IE6, IE5  
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");  
+                };  
+                  
+                if(xmlhttp.upload){  
+                    //进度条  
+                    xmlhttp.upload.addEventListener("progress",  
+                    function(e) {  
+                        if (e.lengthComputable) {  
+                            var load_percent = (e.loaded / e.total) * 10;  
+                            $('#J_photo_wrap ul li').eq(j).find('.loading').css('width',load_percent+'%');  
+                        }  
+                    },  
+                    false);  
+                    //2.回调函数  
+                    //onreadystatechange是每次 readyState 属性改变的时候调用的事件句柄函数  
+                    xmlhttp.onreadystatechange = function(e){  
+                        if(xmlhttp.readyState==4){  
+                            if(xmlhttp.status==200){  
+                                var json = eval('(' + xmlhttp.responseText + ')');  
+                                if(json.status == 1){  
+                                    $('#J_photo_wrap ul li').eq(j).find('.upload_result').text(singleImg.name+'上传完成');  
+                                    $('#J_photo_wrap ul li').eq(j).find('.loading').hide();  
+                                    $('#J_photo_wrap ul li').eq(j).find('.icon_pos').addClass('sucess_icon');  
+                                    }else{  
+                                    $('#J_photo_wrap ul li').eq(j).find('.upload_result').text(singleImg.name+'上传失败');  
+                                    $('#J_photo_wrap ul li').eq(j).find('.loading').hide();  
+                                    $('#J_photo_wrap ul li').eq(j).find('.icon_pos').addClass('error_icon');  
+                                }                         
+                            }else{  
+                                $('#J_photo_wrap ul li').eq(j).find('.upload_result').text(singleImg.name+'上传失败');  
+                                $('#J_photo_wrap ul li').eq(j).find('.loading').hide();  
+                                $('#J_photo_wrap ul li').eq(j).find('.icon_pos').addClass('error_icon');  
+                            }  
+                            if (j < img_index.length - 1) {  
+                                j++;  
+                                img();  
+                            }  
+                        }  
+                    };  
+                      
+                    //3.设置连接信息  
+                    //初始化HTTP请求参数，但是并不发送请求。  
+                    //第一个参数连接方式，第二是url地址,第三个true是异步连接，默认是异步  
+                    //使用post方式发送数据  
+                    xmlhttp.open("POST",imgUrl,true);  
+                      
+                    //4.发送数据，开始和服务器进行交互  
+                    //发送 HTTP 请求，使用传递给 open() 方法的参数，以及传递给该方法的可选请求中如果true, send这句话会立即执行  
+                    //如果是false（同步），send会在服务器数据回来才执行  
+                    //get方法在send中不需要内容  
+                    var formdata = new FormData();  
+                    formdata.append("FileData", singleImg);  
+                    xmlhttp.send(formdata);  
+                }  
+            //}  
+            }  
+        }  
+    };  
+      
+    $('#J_upload').click(function(){  
+        upload_img();  
+    });  
+      
+    $('#J_add_area').hover(  
+        function(){  
+            $('#J_add_pic').addClass('btn_cur');  
+        },  
+        function(){  
+            $('#J_add_pic').removeClass('btn_cur');  
+        }  
+    );  
+    $('#J_add_area').click(function(){  
+        $('#file').click();  
+    });  
+    function resize(img){  
+        if(img.offsetHeight>img.offsetWidth){  
+            $(img).removeClass('img1').addClass('img2');  
+        }else{  
+            $(img).removeClass('img2').addClass('img1');  
+        }  
+    }  
+    
+    function fileInfo(source, _this, index){  
+        var ireg = /image\/.*/i;  
+        var files = source.files;  
+        var name,size,type;  
+                  
+        for(var i = 0, f; f = files[i]; i++) {  
+            name = f.name;  
+            size = f.size;  
+            type = f.type;  
+              
+            if(!type.match(ireg)) {  
+                $('#J_photo_wrap ul').append('<li><div class="photo_box">'+name+'不是图片</div><div class="upload_result"></div></div></li>');  
+            }else{  
+                // img_index.push(f);  
+                //避免多张上传
+                img_index[index] = f;
+                if(size>1048576){  
+                    $('#J_photo_wrap ul').append('<li><div class="photo_box">'+name+'太大，无法生成预览</div><div class="upload_result"></div></li>');  
+                }else{  
+                    if(window.FileReader) {    
+                        var fr = new FileReader();   
+                        fr.onload = (function(f) {  
+                            $(".photo_wrap li").remove();
+                            return function(e){  
+                                $('#J_photo_wrap ul').append('<li><div class="photo_box"><img onload="resize(this);" src="'+this.result+'"/></div><div class="upload_result"></div></li>');  
+                            };  
+                        })(f);  
+                        fr.readAsDataURL(f);  
+                    }   
+                }  
+            }  
+        }  
+    };  
+</script>    
+</html> 
