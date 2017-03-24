@@ -19,20 +19,17 @@
 			float: left;
 			display: inline-block;
 			width: 100px;
-			height: 40px;
+			height: 38px;
 			border-radius: 20px 0 0 20px;
 		}
 		.receiptInfo em {
 			float: left;
 			display: inline-block;
-			width: 40px;
+			width: 38px;
 			border-radius: 0 20px 20px 0;
-			height: 40px;
+			height: 38px;
 			background: #999;
 			font-style: normal;
-		}
-		td {
-			height: 30px;
 			cursor: pointer;
 		}
 		.phoneHide {
@@ -40,54 +37,66 @@
 		}
 	</style>
 </head>
+ <div id="receiptInfo" class="receiptInfo" style="display: none;"><span></span><em>复制</em></div>
+
 	<table>
 		<tbody>
-			<tr>
-				<td></td>
-				<td></td>
+			<tr style="height: 90px">
+				<td>11111111111</td>
+				<td>22222222222</td>
 				<td class="phoneHide">18287197828</td>
+				<td>44444444444</td>
 			</tr>
-			<tr>
-				<td></td>
-				<td></td>
+			<tr style="height: 120px">
+				<td class="phoneHide">11111111111</td>
+				<td>22222222222</td>
 				<td class="phoneHide">18882822828</td>
-				<td></td>
+				<td>44444444444</td>
 			</tr>
-			<tr>
-				<td></td>
-				<td></td>
+			<tr style="height: 100px">
+				<td>11111111111</td>
+				<td>22222222222</td>
 				<td class="phoneHide">12345678912</td>
-				<td></td>
+				<td>44444444444</td>
 			</tr>
-			<tr>
-				<td></td>
-				<td></td>
+			<tr style="height: 80px">
+				<td>11111111111</td>
+				<td>22222222222</td>
 				<td class="phoneHide">78945612312</td>
-				<td></td>
+				<td>44444444444</td>
 			</tr>
 		</tbody>
 	</table>
- <div id="receiptInfo" class="receiptInfo" style="display: none;"><span></span><em>复制</em></div>
 <body>
 <script src="jquery-1.7.2.min.js"></script>
 <script>
 	window.onload = function(){
-		// var str = '18287197828';
-		//plusXing(str,firstLen,endLen)
-		//firstLen:前面保留的手机号码位数
-		//endLen:后面保留的手机号码位数
 		$(".receiptInfo em").click(function(event) {
-			/* Act on the event */
-			 fuzhi()
+			 copyPhone()
 		});
+		// 控制显现状态
+		$(".phoneHide").mouseleave(function(event) {
+			$(".receiptInfo").hide();
+		});
+		$(".receiptInfo").mouseleave(function(event) {
+			$(".receiptInfo").hide();
+		});
+		$(".receiptInfo").mouseenter(function(event) {
+			$(".receiptInfo").show();
+		});
+
+
 		var _thisHtml;
-		$('tbody').find('.phoneHide').each(function(){
+		$('body').find('.phoneHide').each(function(index,el){
 			_thisHtml = $(this).html();
-			$(this).html(plusXing(_thisHtml,3,4))
-			$(this).myHoverTip('receiptInfo',_thisHtml);
-			console.log(_thisHtml)
+			$(this).myHidephone('receiptInfo',_thisHtml);
+			$(this).html(hideCenterNum(_thisHtml,3,4))
 		})
-		function plusXing (str,firstLen,endLen) {
+		function hideCenterNum(str,firstLen,endLen) {
+			// var str = '18287197828';
+			//hideCenterNum(str,firstLen,endLen)
+			//firstLen:前面保留的手机号码位数
+			//endLen:后面保留的手机号码位数
 		    var len = str.length-firstLen-endLen;
 		    var xing = '';
 		    for (var i=0;i<len;i++) {
@@ -96,50 +105,38 @@
 		    return str.substr(0,firstLen)+xing+str.substr(str.length-endLen);
 		}
 
-		function fuzhi(){ 
+		function copyPhone(){ 
 			var codeVal=$("#receiptInfo span").html(); 
-			// alert(codeVal); 
 			if (navigator.userAgent.toLowerCase().indexOf('ie') > -1) { //IE浏览器 
 				clipboardData.setData('Text', codeVal); 
 				alert("已经复制到剪切板"); 
 			} else { 
 				prompt("请复制:", codeVal); 
 			} 
-			window.clipboardData.setData("Text",codeVal); 
+			if(window.clipboardData){
+				window.clipboardData.setData("Text",codeVal);
+			} 
 		} 
 
 	}
-
-
-
-
-		/** 
-	 * 鼠标移上去显示层 
-	 * @param divId 显示的层ID 
-	 * @returns 
-	 */  
-	$.fn.myHoverTip = function(divId,_thisHtml) {  
+	$.fn.myHidephone = function(divId,_thisHtml) {  
 	    var div = $("#" + divId),
 	    	span = div.find('span'); //要浮动在这个元素旁边的层  
 	    div.css("position", "absolute");//让这个层可以绝对定位  
 	    var self = $(this); //当前对象  
-	    self.hover(function() {  
-	        div.css("display", "block");  
+	    self.hover(function() {   
+	        div.show();    
 	        span.html(_thisHtml)
 	        var p = self.position(); //获取这个元素的left和top  
+	        var selfHeight = self.height()/2-$(".receiptInfo").height()/2;
 	        var x = p.left;//获取这个浮动层的left  
 	        var docWidth = $(document).width();//获取网页的宽  
 	        if (x > docWidth - div.width() - 20) {  
 	            x = p.left - div.width();  
 	        }  
 	        div.css("left", x-10);  
-	        div.css("top", p.top-40);  
-	        div.show();  
-	    },  
-	    function() {  
-	        // div.css("display", "none");  
-	    }  
-	    );  
+	        div.css("top", p.top+selfHeight); 
+	    });  
 	    return this;  
 	} 
 </script> 
