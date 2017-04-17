@@ -75,6 +75,7 @@ a,a:after{
     position:absolute;  
     top:0;  
     left:0;  
+    z-index: 5;
 }  
 .btn_upload{  
     width:100px;  
@@ -93,27 +94,33 @@ a,a:after{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FB99B1', endColorstr='#FF5581',GradientType=0 ); /* IE6-8 */  
 }  
 .file_input_wrap{  
-    position:absolute;  
+/*    position:absolute;  
     top:0;  
     left:0;  
     width:100px;  
     height:40px;  
+    z-index: 50;*/
 }  
 .file_input_wrap label{  
+    position: relative;
     width:100%;  
     height:100%;  
     display:block;  
     opacity:0;  
     cursor:pointer;  
+    z-index: 10;
 }  
-.file_input_wrap input{  
+.fileBtn{  
     opacity:0;  
     filter:alpha(opacity=0);/*ie8及以下*/  
     position:absolute;  
-    top:7px;  
-    right:173px;  
+    top:0;  
+    right:0;  
     cursor:pointer;  
-    width:95px;  
+    width:100px;  
+    height: 40px;
+    display: block;
+    z-index: 100;
 }  
 .photo_box .icon_pos{  
     height:20px;  
@@ -139,160 +146,30 @@ a,a:after{
     /*background-image:url(icons_01.png);  */
     background-position:-20px 0;  
 }  
+#J_photo_wrap {
+    clear: both;
+}
 </style>  
 </head>  
   
 <body>  
 <div class="btns">  
     <a class="btn btn_add_pic" id="J_add_pic" href="javascript:;">添加图片</a>  
-    <div class="file_input_wrap">  
-        <input type="file" id="file" name="file" accept="image/*"  onChange="fileInfo(this,$(this),0)" />  
-        <label id="J_add_area"></label>  
-    </div>  
+    <input id="" class="fileBtn" type="file" name="mainUrl" accept="image/gif,image/jpeg,image/jpg,image/png" onchange="fileInfo(this,$(this),0)"> 
+    <label id="J_add_area"></label>  
 </div>  
 <a class="btn btn_upload" id="J_upload" href="javascript:;">开始上传</a>  
-<div id="J_photo_wrap">  
-    <ul class="photo_wrap">  
-    </ul>  
+<div id="J_photo_wrap">
+    <img src="" alt="">
+    <div><span></span></div>
 </div>  
 </body>  
 <script type="text/javascript" src="jquery-1.7.2.min.js"></script>  
+<script type="text/javascript" src="uploadImg.js"></script>  
 <script type="text/javascript">   
-    var img_index = new Array();  
-      
-    function upload_img(){  
-        var j=0;  
-        img('http://localhost/img_upload/upload.php');  
-        function img(imgUrl){  
-            //1.创建XMLHTTPRequest对象  
-            if (img_index.length > 0){  
-                var singleImg = img_index[j];  
-                console.log(singleImg)
-                var xmlhttp;  
-                if (window.XMLHttpRequest) {  
-                    //IE7+, Firefox, Chrome, Opera, Safari  
-                    xmlhttp = new XMLHttpRequest;  
-                      
-                    //针对某些特定版本的mozillar浏览器的bug进行修正  
-                    if (xmlhttp.overrideMimeType) {  
-                        xmlhttp.overrideMimeType('text/xml');  
-                    };  
-                } else if (window.ActiveXObject){  
-                    //IE6, IE5  
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");  
-                };  
-                  
-                if(xmlhttp.upload){  
-                    //进度条  
-                    xmlhttp.upload.addEventListener("progress",  
-                    function(e) {  
-                        if (e.lengthComputable) {  
-                            var load_percent = (e.loaded / e.total) * 10;  
-                            $('#J_photo_wrap ul li').eq(j).find('.loading').css('width',load_percent+'%');  
-                        }  
-                    },  
-                    false);  
-                    //2.回调函数  
-                    //onreadystatechange是每次 readyState 属性改变的时候调用的事件句柄函数  
-                    xmlhttp.onreadystatechange = function(e){  
-                        if(xmlhttp.readyState==4){  
-                            if(xmlhttp.status==200){  
-                                var json = eval('(' + xmlhttp.responseText + ')');  
-                                if(json.status == 1){  
-                                    $('#J_photo_wrap ul li').eq(j).find('.upload_result').text(singleImg.name+'上传完成');  
-                                    $('#J_photo_wrap ul li').eq(j).find('.loading').hide();  
-                                    $('#J_photo_wrap ul li').eq(j).find('.icon_pos').addClass('sucess_icon');  
-                                    }else{  
-                                    $('#J_photo_wrap ul li').eq(j).find('.upload_result').text(singleImg.name+'上传失败');  
-                                    $('#J_photo_wrap ul li').eq(j).find('.loading').hide();  
-                                    $('#J_photo_wrap ul li').eq(j).find('.icon_pos').addClass('error_icon');  
-                                }                         
-                            }else{  
-                                $('#J_photo_wrap ul li').eq(j).find('.upload_result').text(singleImg.name+'上传失败');  
-                                $('#J_photo_wrap ul li').eq(j).find('.loading').hide();  
-                                $('#J_photo_wrap ul li').eq(j).find('.icon_pos').addClass('error_icon');  
-                            }  
-                            if (j < img_index.length - 1) {  
-                                j++;  
-                                img();  
-                            }  
-                        }  
-                    };  
-                      
-                    //3.设置连接信息  
-                    //初始化HTTP请求参数，但是并不发送请求。  
-                    //第一个参数连接方式，第二是url地址,第三个true是异步连接，默认是异步  
-                    //使用post方式发送数据  
-                    xmlhttp.open("POST",imgUrl,true);  
-                      
-                    //4.发送数据，开始和服务器进行交互  
-                    //发送 HTTP 请求，使用传递给 open() 方法的参数，以及传递给该方法的可选请求中如果true, send这句话会立即执行  
-                    //如果是false（同步），send会在服务器数据回来才执行  
-                    //get方法在send中不需要内容  
-                    var formdata = new FormData();  
-                    formdata.append("FileData", singleImg);  
-                    xmlhttp.send(formdata);  
-                }  
-            //}  
-            }  
-        }  
-    };  
-      
-    $('#J_upload').click(function(){  
-        upload_img();  
-    });  
-      
-    $('#J_add_area').hover(  
-        function(){  
-            $('#J_add_pic').addClass('btn_cur');  
-        },  
-        function(){  
-            $('#J_add_pic').removeClass('btn_cur');  
-        }  
-    );  
-    $('#J_add_area').click(function(){  
-        $('#file').click();  
-    });  
-    function resize(img){  
-        if(img.offsetHeight>img.offsetWidth){  
-            $(img).removeClass('img1').addClass('img2');  
-        }else{  
-            $(img).removeClass('img2').addClass('img1');  
-        }  
-    }  
-    
-    function fileInfo(source, _this, index){  
-        var ireg = /image\/.*/i;  
-        var files = source.files;  
-        var name,size,type;  
-                  
-        for(var i = 0, f; f = files[i]; i++) {  
-            name = f.name;  
-            size = f.size;  
-            type = f.type;  
-              
-            if(!type.match(ireg)) {  
-                $('#J_photo_wrap ul').append('<li><div class="photo_box">'+name+'不是图片</div><div class="upload_result"></div></div></li>');  
-            }else{  
-                // img_index.push(f);  
-                //避免多张上传
-                img_index[index] = f;
-                if(size>1048576){  
-                    $('#J_photo_wrap ul').append('<li><div class="photo_box">'+name+'太大，无法生成预览</div><div class="upload_result"></div></li>');  
-                }else{  
-                    if(window.FileReader) {    
-                        var fr = new FileReader();   
-                        fr.onload = (function(f) {  
-                            $(".photo_wrap li").remove();
-                            return function(e){  
-                                $('#J_photo_wrap ul').append('<li><div class="photo_box"><img onload="resize(this);" src="'+this.result+'"/></div><div class="upload_result"></div></li>');  
-                            };  
-                        })(f);  
-                        fr.readAsDataURL(f);  
-                    }   
-                }  
-            }  
-        }  
-    };  
+//上传图片 优化 
+    $("#J_upload").click(function(){
+        upload_img('http://localhost/img_upload/upload.php')
+    })
 </script>    
 </html> 
