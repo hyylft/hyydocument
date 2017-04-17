@@ -1,0 +1,176 @@
+<!DOCTYPE html>  
+<head>  
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />  
+<title>test html FileReader</title>  
+<style type="text/css">  
+html,body,header,footer,div,ul,li,h1,h2,h3,h4,h5,h6,label,input,textarea,p,span,a{  
+    padding: 0;  
+    margin: 0;  
+}  
+img {  
+    border: 0;  
+}  
+em,strong{  
+    font-weight: normal;  
+    font-style: normal;  
+}  
+ul {  
+    list-style: none;  
+}  
+h1,h2,h3,h4,h5,h6 {  
+    font-weight: normal;  
+    font-size: 100%;  
+}  
+a,a:after{  
+    text-decoration:none;  
+}  
+.photo_wrap{  
+    clear:both;  
+}  
+.photo_wrap li{  
+    margin:10px;  
+    width:150px;  
+    float:left;  
+}  
+.photo_box {  
+    height:150px;  
+    width:150px;  
+    overflow:hidden;  
+    position:relative;  
+}  
+.photo_box .img1{  
+    height:150px;  
+}  
+.photo_box .img2{  
+    width:150px;  
+}  
+.upload_result{  
+    height:50px;  
+}  
+.btns{  
+    position:relative;  
+    height:40px;  
+    width:100px;  
+    float:left;  
+}  
+.btn{  
+    height:40px;  
+    line-height:40px;  
+    color:#FFF;  
+    display:block;  
+    border-radius:3px;  
+    text-align:center;  
+    background-color: #FF5581; /* Old browsers */  
+    background-image: -moz-linear-gradient(top,#FA7B9C 0%,  #FF5581 100%); /* FF3.6+ */  
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FA7B9C), color-stop(100%,#FF5581)); /* Chrome,Safari4+ */  
+    background-image: -webkit-linear-gradient(top,#FA7B9C 0%,  #FF5581 100%); /* Chrome10+,Safari5.1+ */  
+    background-image: -o-linear-gradient(top,#FA7B9C 0%, #FF5581 100%); /* Opera 11.10+ */  
+    background-image: -ms-linear-gradient(top,#FA7B9C 0%, #FF5581 100%); /* IE10+ */  
+    background-image: linear-gradient(to bottom,#FA7B9C 0%, #FF5581 100%); /* W3C */  
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FA7B9C', endColorstr='#FF5581',GradientType=0 ); /* IE6-8 */  
+    box-shadow:0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 2px rgba(0, 0, 0, 0.3);  
+}  
+.btn_add_pic{  
+    width:100px;  
+    position:absolute;  
+    top:0;  
+    left:0;  
+    z-index: 5;
+}  
+.btn_upload{  
+    width:100px;  
+    margin:0 10px 10px;  
+    float:left;  
+}  
+.btn:hover,  
+.btn_cur{  
+    background-color: #FB99B1; /* Old browsers */  
+    background-image: -moz-linear-gradient(top,#FB99B1 0%,  #FF5581 100%); /* FF3.6+ */  
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FB99B1), color-stop(100%,##FF5581)); /* Chrome,Safari4+ */  
+    background-image: -webkit-linear-gradient(top,#FB99B1 0%,  #FF5581 100%); /* Chrome10+,Safari5.1+ */  
+    background-image: -o-linear-gradient(top,#FB99B1 0%, #FF5581 100%); /* Opera 11.10+ */  
+    background-image: -ms-linear-gradient(top,#FB99B1 0%, #FF5581 100%); /* IE10+ */  
+    background-image: linear-gradient(to bottom,#FB99B1 0%, #FF5581 100%); /* W3C */  
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FB99B1', endColorstr='#FF5581',GradientType=0 ); /* IE6-8 */  
+}  
+.file_input_wrap{  
+/*    position:absolute;  
+    top:0;  
+    left:0;  
+    width:100px;  
+    height:40px;  
+    z-index: 50;*/
+}  
+.file_input_wrap label{  
+    position: relative;
+    width:100%;  
+    height:100%;  
+    display:block;  
+    opacity:0;  
+    cursor:pointer;  
+    z-index: 10;
+}  
+.fileBtn{  
+    opacity:0;  
+    filter:alpha(opacity=0);/*ie8及以下*/  
+    position:absolute;  
+    top:0;  
+    right:0;  
+    cursor:pointer;  
+    width:100px;  
+    height: 40px;
+    display: block;
+    z-index: 100;
+}  
+.photo_box .icon_pos{  
+    height:20px;  
+    width:20px;  
+    display:block;  
+    position:absolute;  
+    right:0;  
+    bottom:0;  
+}  
+.photo_box .loading{  
+    height:10px;  
+    display:block;  
+    position:absolute;  
+    left:0;  
+    bottom:0;  
+    background-image:url(loading.gif);  
+}  
+.sucess_icon{  
+    /*background-image:url(icons_01.png);  */
+    background-position:0 0;  
+}  
+.error_icon{  
+    /*background-image:url(icons_01.png);  */
+    background-position:-20px 0;  
+}  
+#J_photo_wrap {
+    clear: both;
+}
+</style>  
+</head>  
+  
+<body>  
+<div class="btns">  
+    <a class="btn btn_add_pic" id="J_add_pic" href="javascript:;">添加Excel</a>  
+    <input id="" class="fileBtn" type="file" name="mainUrl"  accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="fileInfo(this,$(this),0)"> 
+    <label id="J_add_area"></label>  
+</div>  
+<a class="btn btn_upload" id="J_upload" href="javascript:;">上传Excel</a>  
+<div id="J_photo_wrap">
+    <img src="" alt="">
+    <div><span></span></div>
+    <a href=""></a>
+</div>  
+</body>  
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>  
+<script type="text/javascript" src="uploadExcel.js"></script>  
+<script type="text/javascript">   
+//上传图片 优化 
+    $("#J_upload").click(function(){
+        upload_excel('http://localhost/img_upload/upload.php')
+    })
+</script>    
+</html> 
