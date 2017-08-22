@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link rel="stylesheet" href="calc.css" />
+</head> 
+<body> 
+	<div id="calculator"> 
+		<form name="calculator" action="" method="get"> 
+			<div id="calcu-screen"> 
+				<input type="text" name="numScreen" id="numScreen" class="screen" value="0" onfocus="this.blur();" /> 
+			</div> 
+			<div id="calcu-btn"> 
+				<ul> <!--配置按钮--> 
+					<li onclick="command(7)">7</li> 
+					<li onclick="command(8)">8</li> 
+					<li onclick="command(9)">9</li> 
+					<li class="tool" onclick="del()">←</li> 
+					<li class="tool" onclick="clearscreen()">AC</li> 
+					<li onclick="command(4)">4</li> 
+					<li onclick="command(5)">5</li> 
+					<li onclick="command(6)">6</li> 
+					<li class="tool" onclick="calcStatus(3)">×</li> 
+					<li class="tool" onclick="calcStatus(4)">÷</li> 
+					<li onclick="command(1)">1</li> 
+					<li onclick="command(2)">2</li> 
+					<li onclick="command(3)">3</li> 
+					<li class="tool" onclick="calcStatus(1)">+</li> 
+					<li class="tool" onclick="calcStatus(2)">-</li> 
+					<li onclick="command(0)">0</li> 
+					<li onclick="dzero()">00</li> 
+					<li onclick="dot()">.</li> 
+					<li class="tool" onclick="calcStatus(5)">%</li> 
+					<li class="tool" onclick="equal()">=</li> 
+				</ul> 
+			</div> 
+			<div id="calcu-foot"> <span id="note"></span></div> 
+		</form> 
+	</div> 
+</body>
+<script src="jquery-1.7.2.min.js"></script>
+<script src="calc.js"></script>
+</html> 
