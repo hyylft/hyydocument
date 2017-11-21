@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>等高布局</title>
+</head>
+<style>
+	html {
+		font-size: 10px;
+	}
+	body {
+		font-size: 1.4rem;
+	}
+	.box {
+		background: #f33;
+	}
+	.box:nth-child(2)  {
+		height: 5rem;
+		background: green;
+	}
+	.table {
+		width: 100%;
+		display: table;
+	}
+	.table .box {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+	}
+</style>
+<body>
+	<div class="table">
+			<div class="box">
+				<p>哈哈哈哈哈哈</p>
+			</div>
+			<div class="box">
+				<p>哈哈哈哈哈哈</p>
+			</div>
+			<div class="box">
+				<p>哈哈哈哈哈哈</p>
+			</div>
+			<div class="box">
+				<p>哈哈哈哈哈哈</p>
+			</div>
+	</div>
+</body>
+</html>
