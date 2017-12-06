@@ -1,0 +1,29 @@
+ <html>
+ <head>    
+   <title>JS限制Textarea文本域字符个数</title>    
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />    
+   <SCRIPT LANGUAGE="JavaScript">         
+   </SCRIPT>    
+   </head>    
+   <body>    
+     <div>
+        <textarea style="width: 300px;height: 100px;" onkeyup="textCounter($(this),50)"></textarea> 
+        <div><sapn class="descriptionNumber">0</sapn><em>/50</em></div>
+     </div>    
+   </body>   
+   <script src="jquery-1.7.2.min.js"></script> 
+   <script>
+     
+      //字数长度控制
+      function textCounter(thisInput, maxlimit) {   
+        var showNumber = thisInput.parent('div').find('.descriptionNumber')
+        if (thisInput.val().length > maxlimit) { 
+          showNumber.html(thisInput.val().length);
+          showNumber.css('color','red');
+        } else {   
+          showNumber.html(thisInput.val().length);
+          showNumber.css('color','#333');
+        }
+      }
+   </script>
+   </html>
