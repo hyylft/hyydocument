@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	#content {
+		overflow:hidden;
+	}
+	.left {
+		float:left;
+		width:200px; 
+		margin-bottom:-3000px; 
+		padding-bottom:3000px; 
+		background:#cad5eb; 
+	}
+	.right {
+		float:right;
+		width:200px; 
+		margin-bottom:-3000px; 
+		padding-bottom:3000px; 
+		background:#f0f3f9; 
+	}
+	.center {
+		height:600px;
+		margin:0 210px 0 210px; 
+		background:#ffe6b8; 
+	}
+</style>
+<body>
+	<div id="content">
+	    <div class="left">左边，无高度属性，自适应于最高一栏的高度</div>
+	    <div class="right">右边，无高度属性，自适应于最高一栏的高度</div>
+	    <div class="center">中间，高度600像素，左右两栏的高度与之自适应</div>
+	</div>
+</body>
+</html>
