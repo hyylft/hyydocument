@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery-cookie的使用</title>
+</head>
+<style>
+	.box a {
+		margin-right: 12px;
+		font-size: 14px;	
+		color: #fff;
+	}
+	.box .alreadClick {
+		color: #ccc;
+	}
+	.box .noClick {
+		color: blue;
+	}
+</style>
+<body>
+	<div class="box">
+		<a href="javascript:;">大屁股</a>
+		<a href="javascript:;">大龅牙</a>
+		<a href="javascript:;">春姐</a>
+		<a href="javascript:;">辣眼睛</a>
+		<a href="javascript:;">背影杀手</a>
+	</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script>
+	Init();
+	$(".box a").click(function(event) {
+		var ind = $(".box a").index(this)
+		alreadClick($(this),ind);
+	});
+	function Init() {
+		$(".box a").each(function(index, el) {
+			// $.cookie('the_cookie')
+			if ($.cookie('the_cookie'+index)==index) {
+				$(this).addClass('alreadClick')
+				console.log($.cookie('the_cookie'+index))
+			}else{
+				$(this).addClass('noClick')
+			}
+		});
+	}
+	function alreadClick(_this,_ind){
+		$.cookie('the_cookie'+_ind, _ind,{ expires: 2, path: '/' });
+		_this.addClass('alreadClick').removeClass('noClick');
+	}
+</script>
+</html>
