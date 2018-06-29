@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 62.5%;">
+
+<head>
+    <meta charset="UTF-8">
+    <title>md5测试</title>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <div class="mian_box">
+        <div>
+            <input class="youVal" type="text" placeholder="请输入要转换的值">
+            <button onclick="toMd5()">转换为MD5</button>
+            <span class="valToMd5"></span>
+        </div>
+        <div>
+            <input class="youMd5" type="text" placeholder="请输入要转换的值">
+            <button onclick="toVal()">MD5转换未你的值</button>
+            <span class="md5ToVal"></span>
+        </div>
+    </div>
+</body>
+<script src="jquery-1.7.2.min.js"></script>
+<script src="md5.js"></script>
+<script src="https://blog-static.cnblogs.com/files/mofish/sha1.js"></script>
+<script>
+    // var password = $(input[name = password]).val(); //加密成md5 
+    // var passwd = $.md5(password);
+
+    function toMd5() {
+        var youVal = $(".youVal").val()
+        $(".valToMd5").html($.md5(youVal))
+    }
+
+    function youMd5() {
+
+    }
+    var sha = hex_sha1('mima123465')
+    alert(sha)
+</script>
+
+</html>
